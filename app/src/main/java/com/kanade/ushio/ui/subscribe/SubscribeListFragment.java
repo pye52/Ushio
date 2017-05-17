@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -55,7 +55,7 @@ public class SubscribeListFragment extends BaseFragment<SubscribeListPresenter> 
         View view = inflater.inflate(R.layout.fragment_sublist, container, false);
         ButterKnife.bind(this, view);
         adapter = new SubscribeListAdapter(Collections.emptyList());
-        mRvSublist.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        mRvSublist.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvSublist.setAdapter(adapter);
         mRvSublist.addOnItemTouchListener(listener);
         mSrlSublist.setOnRefreshListener(this);

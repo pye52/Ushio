@@ -6,41 +6,42 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
-
-    <LinearLayout
+    android:layout_margin="4dp">
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@drawable/touch_bg">
         <ImageView
             android:id="@+id/sublist_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
             android:transitionName="img"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            tools:targetApi="lollipop" />
+            tools:targetApi="lollipop"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:id="@+id/sublist_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/text_primary"
             android:padding="@dimen/card_title_padding"
             android:textSize="@dimen/card_title_size"
             android:gravity="center"
             android:lines="1"
-            android:ellipsize="end"/>
-
-        <ProgressBar
-            android:id="@+id/sublist_progress"
-            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
+            android:ellipsize="end"
+            app:layout_constraintLeft_toRightOf="@id/sublist_img"
             android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dp"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/sublist_progress_label"
@@ -48,9 +49,23 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_caption"
             android:textColor="@color/text_secondary"
+            android:layout_gravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="24dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/sublist_progress"
+            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="16dp"
+            app:layout_constraintLeft_toRightOf="@id/sublist_img"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="4dp"
-            android:layout_gravity="end"/>
-    </LinearLayout>
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@id/sublist_progress_label" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
 
