@@ -5,7 +5,6 @@ import android.app.Application;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.kanade.ushio.BuildConfig;
-import com.liulishuo.filedownloader.FileDownloader;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -53,7 +52,6 @@ public class RootApp extends Application {
 
         // 初始化工具类
         Utils.init(this);
-        FileDownloader.init(getApplicationContext());
 
         // 初始化日志组件
         new LogUtils.Builder()
