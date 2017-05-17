@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:layout_margin="4dp"
+    android:background="@drawable/touch_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/search_img"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:transitionName="img"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:id="@+id/search_title"
+        android:layout_toRightOf="@id/search_img"
+        style="@style/search_item_title"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/search_img"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/search_outline"
+        android:layout_toRightOf="@+id/search_img"
+        android:layout_below="@+id/search_title"
+        style="@style/search_item_outline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/search_title"
+        app:layout_constraintLeft_toRightOf="@id/search_img"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/search_type"
+        android:layout_toRightOf="@+id/search_img"
+        android:layout_below="@+id/search_outline"
+        style="@style/search_item_outline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/search_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/search_img"
+        android:layout_marginLeft="8dp" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="grade_spinner">
+        <item>想看</item>
+        <item>看过</item>
+        <item>在看</item>
+        <item>搁置</item>
+        <item>弃番</item>
+    </string-array>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/touch_bg">
+        <ImageView
+            android:id="@+id/sublist_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:transitionName="img"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            tools:targetApi="lollipop" />
+
+        <TextView
+            android:id="@+id/sublist_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:padding="@dimen/card_title_padding"
+            android:textSize="@dimen/card_title_size"
+            android:gravity="center"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <ProgressBar
+            android:id="@+id/sublist_progress"
+            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/sublist_progress_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_caption"
+            android:textColor="@color/text_secondary"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+

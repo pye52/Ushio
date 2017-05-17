@@ -1,0 +1,9 @@
+.idea/
+.gradle/
+build/
+/local.properties
+app/app.iml
+/ushio.iml
+/app/src/main/java/com/kanade/ushio/api
+api
+captures

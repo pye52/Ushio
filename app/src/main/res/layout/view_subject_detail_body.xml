@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.allen.library.SuperTextView
+                app:sLeftIconRes="@drawable/ic_type"
+                app:sLeftTextString="@string/label_subject_type"
+                style="@style/subject_detail_body_label"/>
+
+            <TextView
+                android:id="@+id/subject_type"
+                style="@style/subject_detail_body_text"/>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/label_subject_story_summary"
+                app:sLeftIconRes="@drawable/ic_story_summary"
+                app:sLeftTextString="@string/label_subject_summary"
+                style="@style/subject_detail_body_label"/>
+
+            <TextView
+                android:id="@+id/subject_story_summary"
+                style="@style/subject_detail_body_text"/>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/label_subject_summary_staff"
+                app:sLeftIconRes="@drawable/ic_summary"
+                app:sLeftTextString="@string/label_subject_summary_staff"
+                app:sRightTextString="@string/more"
+                app:sRightTextColor="@color/grey_500"
+                app:sUseRipple="true"
+                style="@style/subject_detail_body_label"/>
+
+            <TextView
+                android:id="@+id/subject_summary"
+                style="@style/subject_detail_body_text"
+                android:layout_marginBottom="16dp"/>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/label_subject_progress"
+                app:sLeftIconRes="@drawable/ic_progress"
+                app:sLeftTextString="@string/label_subject_progress"
+                app:sRightTextString="@string/more"
+                app:sRightTextColor="@color/grey_500"
+                app:sUseRipple="true"
+                style="@style/subject_detail_body_label"
+                android:paddingBottom="0dp"/>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/label_subject_crt"
+                app:sLeftIconRes="@drawable/ic_crt"
+                app:sLeftTextString="@string/label_subject_crt"
+                app:sRightTextString="@string/more"
+                app:sRightTextColor="@color/grey_500"
+                app:sUseRipple="true"
+                style="@style/subject_detail_body_label"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_crt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="@dimen/base_padding"
+                android:paddingRight="@dimen/base_padding">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</merge>

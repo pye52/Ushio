@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pw_ep_bottomsheet"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pw_ep_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/base_padding"/>
+
+    <TextView
+        android:id="@+id/pw_air_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/base_padding"/>
+
+    <TextView
+        android:id="@+id/pw_ep_wish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        android:background="@drawable/touch_bg"
+        android:text="@string/wish"/>
+
+    <TextView
+        android:id="@+id/pw_ep_watched"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        android:background="@drawable/touch_bg"
+        android:text="@string/watched"/>
+
+    <TextView
+        android:id="@+id/pw_ep_drop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        android:background="@drawable/touch_bg"
+        android:text="@string/drop"/>
+
+    <TextView
+        android:id="@+id/pw_ep_undo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        android:background="@drawable/touch_bg"
+        android:text="@string/undo"/>
+</LinearLayout>

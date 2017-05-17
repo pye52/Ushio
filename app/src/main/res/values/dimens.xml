@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="base_padding">16dp</dimen>
+
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+
+    <dimen name="card_height">150dp</dimen>
+    <dimen name="card_margin">20dp</dimen>
+    <dimen name="card_image_height">@dimen/card_height</dimen>
+    <dimen name="card_title_size">14sp</dimen>
+    <dimen name="card_title_padding">8dp</dimen>
+
+    <dimen name="subject_ep_size">50dp</dimen>
+    <dimen name="subject_progress">8dp</dimen>
+
+    <dimen name="image_toolbar_height">300dp</dimen>
+</resources>
