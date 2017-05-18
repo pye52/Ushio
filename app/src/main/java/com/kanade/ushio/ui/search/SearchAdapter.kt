@@ -8,6 +8,7 @@ import com.kanade.ushio.R
 import com.kanade.ushio.entity.subject.SubjectSimple
 import com.kanade.ushio.utils.ImageLoader.ImageLoader
 import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
+import com.kanade.ushio.utils.strFilter
 import com.kanade.ushio.utils.stringFormat
 
 class SearchAdapter(datas: List<SubjectSimple>) : BaseQuickAdapter<SubjectSimple, BaseViewHolder>(R.layout.rv_item_search, datas) {
@@ -28,7 +29,7 @@ class SearchAdapter(datas: List<SubjectSimple>) : BaseQuickAdapter<SubjectSimple
         helper.setText(R.id.search_outline, item.airDate)
                 .setText(R.id.search_type, "类别: ${item.typeDetail}")
 
-        val title = if (TextUtils.isEmpty(item.nameCn)) item.name else item.nameCn
+        val title = strFilter(item.nameCn, item.name, 12)
         if (key.isNotEmpty()) {
             val titleSpan = stringFormat(title, key)
             helper.setText(R.id.search_title, titleSpan)

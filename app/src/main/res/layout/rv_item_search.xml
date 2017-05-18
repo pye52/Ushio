@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:orientation="vertical"
-        android:clickable="true"
-        android:layout_margin="4dp"
-        android:background="@drawable/touch_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -29,7 +29,7 @@
         <TextView
             android:id="@+id/search_title"
             android:layout_toRightOf="@id/search_img"
-            style="@style/search_item_title"
+            style="@style/text_main"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/search_img"
@@ -39,7 +39,7 @@
             android:id="@+id/search_outline"
             android:layout_toRightOf="@+id/search_img"
             android:layout_below="@+id/search_title"
-            style="@style/search_item_outline"
+            style="@style/text_sub"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/search_title"
             app:layout_constraintLeft_toRightOf="@id/search_img"
@@ -49,7 +49,7 @@
             android:id="@+id/search_type"
             android:layout_toRightOf="@+id/search_img"
             android:layout_below="@+id/search_outline"
-            style="@style/search_item_outline"
+            style="@style/text_sub"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/search_outline"
             app:layout_constraintBottom_toBottomOf="parent"
