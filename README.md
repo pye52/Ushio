@@ -6,9 +6,9 @@
 
 ## 预览
 
-| 首页   | 详情页  | 进度页  | 每日放送 | 个人页  |
-| ---- | ---- | ---- | ---- | ---- |
-|      |      |      |      |      |
+| 首页                                       | 详情页                                      | 进度页                                      | 每日放送                                     | 个人页                                      |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| ![](https://github.com/pye52/Ushio/blob/master/photo/1.png) | ![](https://github.com/pye52/Ushio/blob/master/photo/2.png) | ![](https://github.com/pye52/Ushio/blob/master/photo/3.png) | ![](https://github.com/pye52/Ushio/blob/master/photo/4.png) | ![](https://github.com/pye52/Ushio/blob/master/photo/5.png) |
 
 ## 注意
 
