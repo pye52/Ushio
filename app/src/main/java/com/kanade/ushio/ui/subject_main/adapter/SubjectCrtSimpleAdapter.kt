@@ -18,6 +18,7 @@ class SubjectCrtSimpleAdapter(datas: List<Crt>) : BaseQuickAdapter<Crt, BaseView
                 .getView<ImageView>(R.id.detail_img)
         val loader = ImageLoader.Builder()
                 .url(item.images.image)
+                .placeHolder(R.drawable.img_on_load)
                 .imgView(img)
                 .build()
         ImageLoaderUtil.loadImage(mContext, loader)

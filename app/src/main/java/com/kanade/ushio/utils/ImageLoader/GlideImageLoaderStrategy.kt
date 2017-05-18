@@ -50,7 +50,9 @@ class GlideImageLoaderStrategy : BaseImageLoaderProvider {
         if (img.width != -1 && img.height != -1) {
             request.override(img.width, img.height)
         }
-        request.bitmapTransform(CropCircleTransformation(ctx))
+        // 禁止animate，否则会出现占位图导致加载后变形的问题
+        request.dontAnimate()
+                .bitmapTransform(CropCircleTransformation(ctx))
                 .error(img.errorHolder)
                 .into(img.imgView)
     }
@@ -97,7 +99,9 @@ class GlideImageLoaderStrategy : BaseImageLoaderProvider {
         if (img.width != -1 && img.height != -1) {
             request.override(img.width, img.height)
         }
-        request.error(img.errorHolder)
+        // 禁止animate，否则会出现占位图导致加载后变形的问题
+        request.dontAnimate()
+                .error(img.errorHolder)
                 .into(img.imgView)
     }
 

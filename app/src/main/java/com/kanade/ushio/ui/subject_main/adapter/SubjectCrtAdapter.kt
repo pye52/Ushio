@@ -29,6 +29,7 @@ class SubjectCrtAdapter (datas: List<Crt>) : BaseQuickAdapter<Crt, BaseViewHolde
         if (item.images != null) {
             val loader = ImageLoader.Builder()
                     .url(item.images.image)
+                    .placeHolder(R.drawable.img_on_load)
                     .imgView(img)
                     .build()
             ImageLoaderUtil.loadImage(mContext, loader)

@@ -134,6 +134,7 @@ class SubjectDetailActivity : BaseActivity(), ISubjectDetailContract.View {
                 .width(width)
                 .height(height)
                 .url(url)
+                .placeHolder(R.drawable.img_on_load)
                 .imgView(subjectImg)
                 .build()
         ImageLoaderUtil.loadImage(context, loader)

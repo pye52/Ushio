@@ -21,6 +21,7 @@ class SearchAdapter(datas: List<SubjectSimple>) : BaseQuickAdapter<SubjectSimple
         val img = helper.getView<ImageView>(R.id.search_img)
         val loader = ImageLoader.Builder()
                 .url(item.images.large)
+                .placeHolder(R.drawable.img_on_load)
                 .imgView(img)
                 .build()
         ImageLoaderUtil.loadImage(mContext, loader)
