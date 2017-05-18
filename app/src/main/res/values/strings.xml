@@ -33,6 +33,8 @@
     <string name="calendar_info" formatted="false">评分: %s / 排名: %s</string>
 
     <!-- sublist fragment -->
+    <string name="btn_sublist_progress">进度</string>
+    <string name="sublist_sub" formatted="false">%s \n放送日期: %s</string>
     <string name="sublist_empty">请到bangumi网站添加你的番组收藏</string>
 
     <!-- subject detail -->

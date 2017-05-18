@@ -15,7 +15,7 @@ public class SubscribeListPresenter extends BasePresenter<ISubscribeListContract
         model = new UserCollectionModel();
         model.start();
         int userId = SharePreferenceUtils.INSTANCE.getUserId();
-        Disposable d = model.getCollectionsFromServer(userId)
+        Disposable d = model.getCollections(userId)
                 .doOnSubscribe(disposable -> view.enableRefreshing())
                 .doOnComplete(() -> view.disableRefreshing())
                 .subscribe(list -> { view.showList(list); });
