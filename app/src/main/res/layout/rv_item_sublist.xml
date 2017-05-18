@@ -6,11 +6,13 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/touch_bg">
+        android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/sublist_img"
             android:layout_width="wrap_content"
@@ -27,15 +29,8 @@
             android:layout_marginBottom="8dp" />
 
         <TextView
-            android:id="@+id/sublist_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
-            android:padding="@dimen/card_title_padding"
-            android:textSize="@dimen/card_title_size"
-            android:gravity="center"
-            android:lines="1"
-            android:ellipsize="end"
+            android:id="@+id/sublist_main"
+            style="@style/text_main"
             app:layout_constraintLeft_toRightOf="@id/sublist_img"
             android:layout_marginLeft="8dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,28 +39,27 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/sublist_progress_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_caption"
-            android:textColor="@color/text_secondary"
-            android:layout_gravity="end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="24dp"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <ProgressBar
-            android:id="@+id/sublist_progress"
-            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-            android:layout_width="0dp"
-            android:layout_height="16dp"
+            android:id="@+id/sublist_sub"
+            android:lineSpacingExtra="5dp"
+            style="@style/text_sub"
             app:layout_constraintLeft_toRightOf="@id/sublist_img"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/sublist_main"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/sublist_progress"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:text="@string/btn_sublist_progress"
+            android:background="@drawable/square_touch_bg"
+            android:gravity="center"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@id/sublist_progress_label" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
 

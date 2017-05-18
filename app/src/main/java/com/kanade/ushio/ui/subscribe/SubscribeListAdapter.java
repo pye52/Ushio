@@ -1,10 +1,6 @@
 package com.kanade.ushio.ui.subscribe;
 
-import android.graphics.PorterDuff;
-import android.os.Build;
-import android.text.TextUtils;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -28,23 +24,11 @@ public class SubscribeListAdapter extends BaseQuickAdapter<AniCollection, BaseVi
 
     @Override
     protected void convert(BaseViewHolder helper, AniCollection item) {
-        int currentProgress = item.getEpStatus();
         SubjectSimple subject = item.getSubjectSimple();
-        String maxProgress = subject.getEps() == 0 ? "??" : String.valueOf(subject.getEps());
-        String name = TextUtils.isEmpty(subject.getNameCn()) ? subject.getName() : subject.getNameCn();
-        String progressStr = currentProgress + "/" + maxProgress;
 
-        helper.setText(R.id.sublist_title, name)
-                .setText(R.id.sublist_progress_label, progressStr);
-
-        ProgressBar progressBar = helper.getView(R.id.sublist_progress);
-        progressBar.setMax(subject.getEps());
-        progressBar.setProgress(item.getEpStatus());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            progressBar.getProgressDrawable().setColorFilter(mContext.getColor(R.color.progressbar_color), PorterDuff.Mode.SRC_IN);
-        } else {
-            progressBar.getProgressDrawable().setColorFilter(mContext.getResources().getColor(R.color.progressbar_color), PorterDuff.Mode.SRC_IN);
-        }
+        helper.setText(R.id.sublist_main, subject.getNameCn())
+                .setText(R.id.sublist_sub, mContext.getString(R.string.sublist_sub, subject.getName(), subject.getAirDate()))
+                .addOnClickListener(R.id.sublist_progress);
 
         ImageView img = helper.getView(R.id.sublist_img);
         ImageLoader loader = new ImageLoader.Builder()

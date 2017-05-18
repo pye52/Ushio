@@ -20,6 +20,7 @@ import com.kanade.ushio.R;
 import com.kanade.ushio.ui.search.SearchFragment;
 import com.kanade.ushio.ui.base.BaseFragment;
 import com.kanade.ushio.entity.AniCollection;
+import com.kanade.ushio.ui.subject_main.SubjectSubActivity;
 import com.kanade.ushio.ui.subject_main.subject_detail.SubjectDetailActivity;
 
 import java.util.Collections;
@@ -117,6 +118,14 @@ public class SubscribeListFragment extends BaseFragment<SubscribeListPresenter> 
             int subId = aniCollection.getSubjectSimple().getId();
             Intent intent = SubjectDetailActivity.newInstance(getContext(), subId);
             startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view.findViewById(R.id.sublist_img), "img").toBundle());
+        }
+
+        @Override
+        public void onItemChildClick(BaseQuickAdapter a, View view, int position) {
+            super.onItemChildClick(adapter, view, position);
+            AniCollection aniCollection = adapter.getItem(position);
+            if (aniCollection == null) return;
+            startActivity(SubjectSubActivity.newEpInstance(getContext(), aniCollection.getSubjectSimple().getId()));
         }
     };
 }
