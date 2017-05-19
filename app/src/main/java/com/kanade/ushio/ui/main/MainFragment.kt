@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.github.javiersantos.appupdater.AppUpdater
+import com.github.javiersantos.appupdater.enums.UpdateFrom
 import com.kanade.ushio.R
 import com.kanade.ushio.adapter.MainVpAdapter
 import com.kanade.ushio.ui.about.AboutFragment
 import com.kanade.ushio.ui.calendar.CalendarFragment
 import com.kanade.ushio.ui.subscribe.SubscribeListFragment
+import com.kanade.ushio.utils.UPDATE_PATH
 import me.yokeyword.fragmentation.SupportFragment
 
 class MainFragment : SupportFragment(){
@@ -74,9 +77,20 @@ class MainFragment : SupportFragment(){
                 prevMenuItem = curMenuItem
 
             }
-
             override fun onPageScrollStateChanged(state: Int) = Unit
         })
+        checkVer()
         return view
+    }
+
+    private fun checkVer() {
+        AppUpdater(context)
+                .setUpdateFrom(UpdateFrom.JSON)
+                .setUpdateJSON(UPDATE_PATH)
+                .setTitleOnUpdateAvailable(R.string.update)
+                .setButtonUpdate(R.string.btn_update)
+                .setButtonDismiss(R.string.cancel)
+                .setButtonDoNotShowAgain("")
+                .start()
     }
 }

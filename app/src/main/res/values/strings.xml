@@ -50,7 +50,6 @@
 
     <!-- update -->
     <string name="update">更新版本</string>
-    <string name="up_to_date_title">未能找到最新版本</string>
     <string name="up_to_date">已是最新版本</string>
     <string name="btn_update">更新</string>
 

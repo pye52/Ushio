@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import java.util.regex.Pattern
 
+const val UPDATE_PATH = "https://raw.githubusercontent.com/pye52/Ushio/master/update.json"
+
 /**
  * 筛选两个字符串，若[name1]为空则采用[name2]
  *
