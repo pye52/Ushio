@@ -90,6 +90,7 @@ dependencies {
     compile rootProject.ext.dependencies['gson']
     compile rootProject.ext.dependencies['utils']
     compile rootProject.ext.dependencies['app-updater']
+    compile rootProject.ext.dependencies['jsoup']
     // -------------------- butterknife --------------------
     compile rootProject.ext.dependencies['butterknife']
     kapt rootProject.ext.dependencies['butterknife-compiler']

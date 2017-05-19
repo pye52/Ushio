@@ -37,6 +37,7 @@ ext {
             "utils"                  : '1.5.1',
             "filedownloader"         : '1.4.3',
             "app-updater"            : '2.6.1',
+            "jsoup"                  : '1.10.2',
             // -------------------- butterknife --------------------
             "butterknife"            : '8.5.1'
     ]
@@ -77,6 +78,7 @@ ext {
             "utils"                  : "com.blankj:utilcode:${ver['utils']}",
             "filedownloader"         : "com.liulishuo.filedownloader:library:${ver['filedownloader']}",
             "app-updater"            : "com.github.javiersantos:AppUpdater:${ver['app-updater']}",
+            "jsoup"                  : "org.jsoup:jsoup:${ver['jsoup']}",
             // -------------------- butterknife --------------------
             "butterknife"            : "com.jakewharton:butterknife:${ver['butterknife']}",
             "butterknife-compiler"   : "com.jakewharton:butterknife-compiler:${ver['butterknife']}"
