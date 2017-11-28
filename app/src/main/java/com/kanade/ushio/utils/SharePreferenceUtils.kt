@@ -7,7 +7,7 @@ import com.kanade.ushio.entity.subject.Image
 object SharePreferenceUtils {
     private const val IS_LOGINED = "is_logined"
 
-    private var spUtils = SPUtils("share_data")
+    private var spUtils = SPUtils.getInstance("share_data")
 
     fun getSpUtils(): SPUtils = spUtils
 

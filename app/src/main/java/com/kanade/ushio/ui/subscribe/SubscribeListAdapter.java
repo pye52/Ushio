@@ -7,8 +7,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.kanade.ushio.R;
 import com.kanade.ushio.entity.subject.SubjectSimple;
 import com.kanade.ushio.entity.AniCollection;
-import com.kanade.ushio.utils.ImageLoader.ImageLoader;
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -31,11 +29,11 @@ public class SubscribeListAdapter extends BaseQuickAdapter<AniCollection, BaseVi
                 .addOnClickListener(R.id.sublist_progress);
 
         ImageView img = helper.getView(R.id.sublist_img);
-        ImageLoader loader = new ImageLoader.Builder()
-                .url(subject.getImages().getLarge())
-                .placeHolder(R.drawable.img_on_load)
-                .imgView(img)
-                .build();
-        ImageLoaderUtil.INSTANCE.loadImage(mContext, loader);
+//        ImageLoader loader = new ImageLoader.Builder()
+//                .url(subject.getImages().getLarge())
+//                .placeHolder(R.drawable.img_on_load)
+//                .imgView(img)
+//                .build();
+//        ImageLoaderUtil.INSTANCE.loadImage(mContext, loader);
     }
 }

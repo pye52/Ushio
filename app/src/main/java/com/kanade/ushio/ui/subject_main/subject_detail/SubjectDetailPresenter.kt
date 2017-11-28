@@ -1,7 +1,6 @@
 package com.kanade.ushio.ui.subject_main.subject_detail
 
 import android.view.View
-import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.LogUtils
 import com.kanade.ushio.R
 import com.kanade.ushio.api.responses.GradeResponse
@@ -10,8 +9,6 @@ import com.kanade.ushio.model.subject.SubjectModel
 import com.kanade.ushio.ui.base.BasePresenter
 import com.kanade.ushio.ui.subject_main.SubjectSubActivity
 import com.kanade.ushio.utils.*
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 
 class SubjectDetailPresenter : BasePresenter<ISubjectDetailContract.View>(), ISubjectDetailContract.Presenter {
     private lateinit var model : SubjectModel
@@ -105,24 +102,24 @@ class SubjectDetailPresenter : BasePresenter<ISubjectDetailContract.View>(), ISu
     }
 
     private fun setBitmap(url: String) {
-        ImageLoaderUtil.getBitmap(context, url, { bitmap ->
-            // 根据短边等比缩小图片
-            val dp170 = ConvertUtils.dp2px(170f)
-            val dp150 = ConvertUtils.dp2px(150f)
-            val w: Int
-            val h: Int
-            if (bitmap.width > bitmap.height) {
-                w = dp150
-                h = (w.toFloat() / bitmap.width * bitmap.height).toInt()
-            } else {
-                h = dp170
-                w = (h.toFloat() / bitmap.height * bitmap.width).toInt()
-            }
-            view.setImg(url, w, h)
-
-            val bgw = Math.round(bitmap.width * 0.5f)
-            val bgh = Math.round(bitmap.height * 0.5f)
-            view.setImgBg(url, bgw, bgh)
-        })
+//        ImageLoaderUtil.getBitmap(context, url, { bitmap ->
+//            // 根据短边等比缩小图片
+//            val dp170 = ConvertUtils.dp2px(170f)
+//            val dp150 = ConvertUtils.dp2px(150f)
+//            val w: Int
+//            val h: Int
+//            if (bitmap.width > bitmap.height) {
+//                w = dp150
+//                h = (w.toFloat() / bitmap.width * bitmap.height).toInt()
+//            } else {
+//                h = dp170
+//                w = (h.toFloat() / bitmap.height * bitmap.width).toInt()
+//            }
+//            view.setImg(url, w, h)
+//
+//            val bgw = Math.round(bitmap.width * 0.5f)
+//            val bgh = Math.round(bitmap.height * 0.5f)
+//            view.setImgBg(url, bgw, bgh)
+//        })
     }
 }

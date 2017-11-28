@@ -50,7 +50,7 @@
         <item name="android:layout_marginTop">@dimen/base_padding</item>
         <item name="sLeftIconHeight">20dp</item>
         <item name="sLeftIconWidth">20dp</item>
-        <item name="sLineShow">none</item>
+        <item name="sDividerLineType">none</item>
     </style>
 
     <style name="subject_detail_body_text">
@@ -63,7 +63,7 @@
         <item name="android:layout_marginBottom">4dp</item>
         <item name="sLeftIconHeight">20dp</item>
         <item name="sLeftIconWidth">20dp</item>
-        <item name="sLineShow">none</item>
+        <item name="sDividerLineType">none</item>
     </style>
 
     <style name="subject_detail_item">

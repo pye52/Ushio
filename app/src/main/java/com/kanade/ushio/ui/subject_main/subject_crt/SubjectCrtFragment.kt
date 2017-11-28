@@ -56,5 +56,5 @@ class SubjectCrtFragment : BaseFragment<SubjectCrtPresenter>(), ISubjectCrtContr
         adapter.setNewData(datas)
     }
 
-    override fun createPresenter(): SubjectCrtPresenter = SubjectCrtPresenter()
+    override fun createPresenter(savedInstanceState: Bundle?): SubjectCrtPresenter = SubjectCrtPresenter()
 }

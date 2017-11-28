@@ -31,7 +31,7 @@ public class MainActivity extends SupportActivity implements IMainActivityContra
     }
 
     @Override
-    protected FragmentAnimator onCreateFragmentAnimator() {
+    public FragmentAnimator onCreateFragmentAnimator() {
         return new DefaultHorizontalAnimator();
     }
 }

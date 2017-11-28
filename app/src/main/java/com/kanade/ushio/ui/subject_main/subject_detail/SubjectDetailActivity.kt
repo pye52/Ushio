@@ -32,8 +32,6 @@ import com.kanade.ushio.ui.base.BaseActivity
 import com.kanade.ushio.ui.subject_main.SubjectGradeDialog
 import com.kanade.ushio.ui.subject_main.adapter.SubjectCrtSimpleAdapter
 import com.kanade.ushio.ui.widget.GridSpacingItemDecoration
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 import com.kanade.ushio.utils.strFilter
 import java.util.*
 
@@ -121,23 +119,23 @@ class SubjectDetailActivity : BaseActivity(), ISubjectDetailContract.View {
     }
 
     override fun setImgBg(url: String, width: Int, height: Int) {
-        val loader = ImageLoader.Builder()
-                .width(width)
-                .height(height)
-                .url(url)
-                .build()
-        ImageLoaderUtil.loadImageWithBlur(context, 20, loader, { d -> ctl.background = d })
+//        val loader = ImageLoader.Builder()
+//                .width(width)
+//                .height(height)
+//                .url(url)
+//                .build()
+//        ImageLoaderUtil.loadImageWithBlur(context, 20, loader, { d -> ctl.background = d })
     }
 
     override fun setImg(url: String, width: Int, height: Int) {
-        val loader = ImageLoader.Builder()
-                .width(width)
-                .height(height)
-                .url(url)
-                .placeHolder(R.drawable.img_on_load)
-                .imgView(subjectImg)
-                .build()
-        ImageLoaderUtil.loadImage(context, loader)
+//        val loader = ImageLoader.Builder()
+//                .width(width)
+//                .height(height)
+//                .url(url)
+//                .placeHolder(R.drawable.img_on_load)
+//                .imgView(subjectImg)
+//                .build()
+//        ImageLoaderUtil.loadImage(context, loader)
     }
 
     override fun startAct(intent: Intent) = startActivity(intent)
@@ -202,16 +200,16 @@ class SubjectDetailActivity : BaseActivity(), ISubjectDetailContract.View {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.enterTransition = Fade()
             window.exitTransition = Fade()
-            val mChildView = (findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup).getChildAt(0)
+            val mChildView = (findViewById<ViewGroup>(Window.ID_ANDROID_CONTENT)).getChildAt(0)
             if (mChildView != null)
                 ViewCompat.setFitsSystemWindows(mChildView, false)
 
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            val mContentView = findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup
+            val mContentView = findViewById<ViewGroup>(Window.ID_ANDROID_CONTENT)
             val statusBarView = mContentView.getChildAt(0)
 
-            if (statusBarView != null && statusBarView.layoutParams != null && statusBarView.layoutParams.height == BarUtils.getStatusBarHeight(this))
+            if (statusBarView != null && statusBarView.layoutParams != null && statusBarView.layoutParams.height == BarUtils.getStatusBarHeight())
                 mContentView.removeView(statusBarView)
             if (statusBarView != null)
                 ViewCompat.setFitsSystemWindows(statusBarView, false)

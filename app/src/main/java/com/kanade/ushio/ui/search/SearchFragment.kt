@@ -59,8 +59,8 @@ class SearchFragment : BaseFragment<SearchPresenter>(), ISearchContract.View, Se
         searchView.imeOptions = EditorInfo.IME_ACTION_SEARCH
         searchView.queryHint = "搜索"
         searchView.isSubmitButtonEnabled = true
-        (searchView.findViewById(R.id.search_button) as ImageView).setImageResource(R.drawable.ic_search)
-        (searchView.findViewById(R.id.search_go_btn) as ImageView).setImageResource(R.drawable.ic_search)
+        (searchView.findViewById<ImageView>(R.id.search_button)).setImageResource(R.drawable.ic_search)
+        (searchView.findViewById<ImageView>(R.id.search_go_btn)).setImageResource(R.drawable.ic_search)
         searchView.setOnQueryTextListener(this)
         item.actionView = searchView
         searchView.onActionViewExpanded()
@@ -105,5 +105,5 @@ class SearchFragment : BaseFragment<SearchPresenter>(), ISearchContract.View, Se
         }
     }
 
-    override fun createPresenter(): SearchPresenter = SearchPresenter()
+    override fun createPresenter(savedInstanceState: Bundle?): SearchPresenter = SearchPresenter()
 }

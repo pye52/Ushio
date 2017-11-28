@@ -51,6 +51,12 @@ class UserCollectionModel : IBaseModel {
             Observable.just(realm.where(UserCollection::class.java)
                     .equalTo("id", userId)
                     .findAll())
-                    .map { return@map if (it.isNotEmpty()) it[0].collections else Collections.emptyList() }
+                    .map {
+                        if (it.isNotEmpty()) {
+                            it[0]?.collections
+                        } else {
+                            Collections.emptyList()
+                        }
+                    }
                     .subscribeOn(AndroidSchedulers.mainThread())
 }

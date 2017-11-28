@@ -15,7 +15,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.realm.Realm
 import java.util.*
-import kotlin.collections.ArrayList
 
 class SubjectProgressModel : ISubjectProgressModel {
     private lateinit var realm: Realm
@@ -63,7 +62,7 @@ class SubjectProgressModel : ISubjectProgressModel {
                         realm.where(WatchStatus::class.java)
                                 .equalTo("epId", epId)
                                 .findFirst()
-                                .setStatus(statusStr)
+                                ?.setStatus(statusStr)
                         realm.commitTransaction()
                     }
 
@@ -77,7 +76,7 @@ class SubjectProgressModel : ISubjectProgressModel {
 
     private fun getSubjectEpFromLocal(subjectEpId: Int) =
             epModel.getSubjectEpFromLocal(subjectEpId)
-                    .map { it?.eps ?: Collections.emptyList<Ep>() }
+                    .map { it.eps ?: Collections.emptyList<Ep>() }
 
     /**
      * 将剧集观看信息填充到[SubjectEp.eps]的[Ep.watchStatus]中

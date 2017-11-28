@@ -72,5 +72,5 @@ class SubjectStaffFragment : BaseFragment<SubjectStaffPresenter>(), ISubjectStaf
 
     override fun exit() = activity.finish()
 
-    override fun createPresenter(): SubjectStaffPresenter = SubjectStaffPresenter()
+    override fun createPresenter(savedInstanceState: Bundle?): SubjectStaffPresenter = SubjectStaffPresenter()
 }

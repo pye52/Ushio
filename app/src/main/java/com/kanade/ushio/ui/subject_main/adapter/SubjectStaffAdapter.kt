@@ -6,8 +6,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.kanade.ushio.R
 import com.kanade.ushio.entity.subject.Staff
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 import com.kanade.ushio.utils.strFilter
 
 class SubjectStaffAdapter(datas: List<Staff>) : BaseQuickAdapter<Staff, BaseViewHolder>(R.layout.rv_item_crt, datas) {
@@ -22,12 +20,12 @@ class SubjectStaffAdapter(datas: List<Staff>) : BaseQuickAdapter<Staff, BaseView
                 .setVisible(R.id.crt_cv_name, false)
                 .getView<ImageView>(R.id.crt_img)
         if (item.images != null) {
-            val loader = ImageLoader.Builder()
-                    .url(item.images.image)
-                    .placeHolder(R.drawable.ic_social_person)
-                    .imgView(img)
-                    .build()
-            ImageLoaderUtil.loadImage(mContext, loader)
+//            val loader = ImageLoader.Builder()
+//                    .url(item.images.image)
+//                    .placeHolder(R.drawable.ic_social_person)
+//                    .imgView(img)
+//                    .build()
+//            ImageLoaderUtil.loadImage(mContext, loader)
         }
     }
 

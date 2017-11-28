@@ -53,7 +53,7 @@ public class LoginFragment extends BaseFragment<LoginPresenter> implements ILogi
 
     @NonNull
     @Override
-    public LoginPresenter createPresenter() {
+    public LoginPresenter createPresenter(Bundle savedInstanceState) {
         return new LoginPresenter();
     }
 

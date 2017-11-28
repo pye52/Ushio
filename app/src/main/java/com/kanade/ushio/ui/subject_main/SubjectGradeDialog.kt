@@ -32,9 +32,9 @@ class SubjectGradeDialog(ctx: Context, callback: MaterialDialog.SingleButtonCall
     init {
         view = dialog.customView as View
         view?.let { view ->
-            gradeSp = view.findViewById(R.id.subject_grade_sp) as AppCompatSpinner
-            ratingBar = view.findViewById(R.id.subject_grade_sb) as BubbleSeekBar
-            commentEt = view.findViewById(R.id.subject_grade_et) as EditText
+            gradeSp = view.findViewById(R.id.subject_grade_sp)
+            ratingBar = view.findViewById(R.id.subject_grade_sb)
+            commentEt = view.findViewById(R.id.subject_grade_et)
 
             adapter = ArrayAdapter<String>(ctx, android.R.layout.simple_spinner_item, ctx.resources.getStringArray(R.array.grade_spinner))
             adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)

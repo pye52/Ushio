@@ -29,12 +29,12 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = createPresenter();
+        presenter = createPresenter(savedInstanceState);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void onEnterAnimationEnd(Bundle savedInstanceState) {
+    public void onEnterAnimationEnd(Bundle savedInstanceState) {
         super.onEnterAnimationEnd(savedInstanceState);
         presenter.attach(this);
     }
@@ -81,7 +81,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends SupportFrag
      * @param toolbar 要设置的导航栏
      */
     protected void initToolbarNav(Toolbar toolbar) {
-        View.OnClickListener navOnClickListener = v -> _mActivity.onBackPressedSupport();
+        View.OnClickListener navOnClickListener = v -> _mActivity.onBackPressed();
 
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(navOnClickListener);

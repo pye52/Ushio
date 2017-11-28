@@ -6,8 +6,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.kanade.ushio.R
 import com.kanade.ushio.entity.subject.Crt
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 
 class SubjectCrtSimpleAdapter(datas: List<Crt>) : BaseQuickAdapter<Crt, BaseViewHolder>(R.layout.rv_item_subject_detail, datas) {
     override fun convert(helper: BaseViewHolder, item: Crt) {
@@ -16,11 +14,11 @@ class SubjectCrtSimpleAdapter(datas: List<Crt>) : BaseQuickAdapter<Crt, BaseView
         val img = helper.setText(R.id.detail_main, name)
                 .setText(R.id.detail_sub, item.roleName)
                 .getView<ImageView>(R.id.detail_img)
-        val loader = ImageLoader.Builder()
-                .url(item.images.image)
-                .placeHolder(R.drawable.img_on_load)
-                .imgView(img)
-                .build()
-        ImageLoaderUtil.loadImage(mContext, loader)
+//        val loader = ImageLoader.Builder()
+//                .url(item.images.image)
+//                .placeHolder(R.drawable.img_on_load)
+//                .imgView(img)
+//                .build()
+//        ImageLoaderUtil.loadImage(mContext, loader)
     }
 }

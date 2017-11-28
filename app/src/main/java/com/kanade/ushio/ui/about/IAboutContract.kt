@@ -9,6 +9,5 @@ interface IAboutContract {
     }
 
     interface Presenter : IBasePresenter<View> {
-        fun update()
     }
 }

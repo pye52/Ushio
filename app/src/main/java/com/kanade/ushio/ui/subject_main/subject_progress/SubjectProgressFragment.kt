@@ -82,9 +82,7 @@ class SubjectProgressFragment : BaseFragment<ISubjectProgressContract.Presenter>
         adapter.notifyItemChanged(position)
     }
 
-    override fun createPresenter(): ISubjectProgressContract.Presenter {
-        return SubjectProgressPresenter()
-    }
+    override fun createPresenter(savedInstanceState: Bundle?) = SubjectProgressPresenter()
 
     override fun onClick(view: View) {
         presenter.bottomOnClick(view)

@@ -12,12 +12,14 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.afollestad.materialdialogs.MaterialDialog
 import com.blankj.utilcode.util.AppUtils
+import com.github.javiersantos.appupdater.AppUpdater
+import com.github.javiersantos.appupdater.enums.UpdateFrom
 import com.kanade.ushio.R
 import com.kanade.ushio.ui.base.BaseFragment
 import com.kanade.ushio.ui.login.LoginActivity
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 import com.kanade.ushio.utils.SharePreferenceUtils
+import com.kanade.ushio.utils.UPDATE_PATH
+import com.kanade.ushio.utils.glide_module.GlideApp
 
 class AboutFragment : BaseFragment<AboutPresenter>(), IAboutContract.View {
     @BindView(R.id.toolbar)
@@ -49,20 +51,42 @@ class AboutFragment : BaseFragment<AboutPresenter>(), IAboutContract.View {
         versionTv.text = "${getString(R.string.label_about_version)}(当前版本: $v)"
 
         val userAvatar = SharePreferenceUtils.getUserImage()
-        val loader = ImageLoader.Builder()
-                .url(userAvatar.large)
-                .imgView(iv)
-                .build()
-        ImageLoaderUtil.loadCircleImage(context, loader)
+        GlideApp.with(this)
+                .load(userAvatar.large)
+                .into(iv)
     }
 
     @OnClick(R.id.logout, R.id.exitapp, R.id.version, R.id.about)
     fun OnClick(view: View) {
         when (view.id) {
-            R.id.logout -> if (!logoutDialog.isShowing) logoutDialog.show()
-            R.id.exitapp -> if (!exitappDialog.isShowing) exitappDialog.show()
-            R.id.version -> presenter.update()
-            R.id.about -> if (!aboutDialog.isShowing) aboutDialog.show()
+            R.id.logout -> {
+                if (!logoutDialog.isShowing) {
+                    logoutDialog.show()
+                }
+            }
+            R.id.exitapp -> {
+                if (!exitappDialog.isShowing) {
+                    exitappDialog.show()
+                }
+            }
+            R.id.version -> {
+                AppUpdater(context)
+                        .showAppUpdated(true)
+                        .setUpdateFrom(UpdateFrom.JSON)
+                        .setUpdateJSON(UPDATE_PATH)
+                        .setTitleOnUpdateAvailable(R.string.update)
+                        .setTitleOnUpdateNotAvailable("")
+                        .setContentOnUpdateNotAvailable(R.string.up_to_date)
+                        .setButtonUpdate(R.string.btn_update)
+                        .setButtonDismiss(R.string.cancel)
+                        .setButtonDoNotShowAgain("")
+                        .start()
+            }
+            R.id.about -> {
+                if (!aboutDialog.isShowing) {
+                    aboutDialog.show()
+                }
+            }
         }
     }
 
@@ -72,8 +96,8 @@ class AboutFragment : BaseFragment<AboutPresenter>(), IAboutContract.View {
                     .positiveText(R.string.certain)
                     .negativeText(R.string.cancel)
                     .onPositive { _, _ ->
-                        val intent = LoginActivity.newInstance(context)
                         SharePreferenceUtils.setIsLogined(false)
+                        val intent = LoginActivity.newInstance(context)
                         startActivity(intent)
                         activity.finish()
                     }
@@ -93,5 +117,5 @@ class AboutFragment : BaseFragment<AboutPresenter>(), IAboutContract.View {
                     .positiveText(R.string.certain)
                     .build()
 
-    override fun createPresenter(): AboutPresenter = AboutPresenter()
+    override fun createPresenter(savedInstanceState: Bundle?): AboutPresenter = AboutPresenter()
 }

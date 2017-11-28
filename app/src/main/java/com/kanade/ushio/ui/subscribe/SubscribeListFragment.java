@@ -75,7 +75,7 @@ public class SubscribeListFragment extends BaseFragment<SubscribeListPresenter> 
     }
 
     @Override
-    protected void onEnterAnimationEnd(Bundle savedInstanceState) {
+    public void onEnterAnimationEnd(Bundle savedInstanceState) {
         super.onEnterAnimationEnd(savedInstanceState);
         presenter.initDatas();
     }
@@ -87,7 +87,7 @@ public class SubscribeListFragment extends BaseFragment<SubscribeListPresenter> 
 
     @NonNull
     @Override
-    public SubscribeListPresenter createPresenter() {
+    public SubscribeListPresenter createPresenter(Bundle savedInstanceState) {
         return new SubscribeListPresenter();
     }
 

@@ -6,8 +6,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.kanade.ushio.R
 import com.kanade.ushio.entity.subject.Crt
-import com.kanade.ushio.utils.ImageLoader.ImageLoader
-import com.kanade.ushio.utils.ImageLoader.ImageLoaderUtil
 import com.kanade.ushio.utils.strFilter
 
 class SubjectCrtAdapter (datas: List<Crt>) : BaseQuickAdapter<Crt, BaseViewHolder>(R.layout.rv_item_crt, datas) {
@@ -20,19 +18,19 @@ class SubjectCrtAdapter (datas: List<Crt>) : BaseQuickAdapter<Crt, BaseViewHolde
                 .addString2Builder("体重", item.info.weight, true)
                 .addString2Builder("BWH", item.info.bwh, true)
 
-        val cvName = if (item.actors.isNotEmpty()) item.actors[0].name else ""
+        val cvName = if (item.actors.isNotEmpty()) item.actors[0]?.name else ""
 
         val img = helper.setText(R.id.crt_name, strFilter(item.nameCn, item.name, 12))
                 .setText(R.id.crt_info, info.toString())
                 .setText(R.id.crt_cv_name, cvName)
                 .getView<ImageView>(R.id.crt_img)
         if (item.images != null) {
-            val loader = ImageLoader.Builder()
-                    .url(item.images.image)
-                    .placeHolder(R.drawable.img_on_load)
-                    .imgView(img)
-                    .build()
-            ImageLoaderUtil.loadImage(mContext, loader)
+//            val loader = ImageLoader.Builder()
+//                    .url(item.images.image)
+//                    .placeHolder(R.drawable.img_on_load)
+//                    .imgView(img)
+//                    .build()
+//            ImageLoaderUtil.loadImage(mContext, loader)
         }
     }
 

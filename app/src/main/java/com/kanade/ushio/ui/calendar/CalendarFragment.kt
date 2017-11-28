@@ -92,5 +92,5 @@ class CalendarFragment : BaseFragment<CalendarPresenter>(), ICalendarContract.Vi
         }
     }
 
-    override fun createPresenter(): CalendarPresenter = CalendarPresenter()
+    override fun createPresenter(savedInstanceState: Bundle?): CalendarPresenter = CalendarPresenter()
 }
