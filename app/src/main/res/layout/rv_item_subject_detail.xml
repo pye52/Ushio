@@ -21,22 +21,27 @@
 
     <TextView
         android:id="@+id/detail_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
         android:maxLines="1"
         android:ellipsize="end"
-        style="@style/subject_detail_item"
         app:layout_constraintLeft_toRightOf="@id/detail_img"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/detail_sub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:maxLines="1"
         android:ellipsize="end"
         android:textColor="@color/grey_500"
-        style="@style/subject_detail_item"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/detail_main"
         app:layout_constraintLeft_toRightOf="@id/detail_img"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
 </android.support.constraint.ConstraintLayout>

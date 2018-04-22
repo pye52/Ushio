@@ -1,89 +1,61 @@
 <resources>
     <string name="app_name">Ushio</string>
-    <string name="certain">确认</string>
+    <string name="confirm">确认</string>
     <string name="cancel">取消</string>
     <string name="edit">编辑</string>
     <string name="success">成功</string>
     <string name="search">搜索</string>
-    <string name="more">更多</string>
+    <string name="more">更多 ></string>
     <string name="refresh">刷新</string>
+    <!-- 授权页面 -->
+    <string name="login_page_title">登录</string>
+    <string name="btn_auth">获取授权</string>
+    <string name="token_expired">登录授权已过期，请重新登录</string>
 
+    <string name="net_error">网络异常，请检查本机网络连接情况</string>
+
+    <!-- 主页 -->
     <string name="title_nav_collection">我的进度</string>
-    <string name="title_nav_rakuen">超展开</string>
     <string name="title_nav_calendar">每日放送</string>
-    <string name="title_nav_search">搜索</string>
     <string name="title_nav_me">我的</string>
-    <string name="title_nav_about">关于</string>
-
-    <string name="title_grade">你的追番信息</string>
-    <string name="title_nav_logout">退出帐号</string>
-    <string name="title_nav_exitapp">退出app</string>
-
-    <string name="no_internet">网络连接出现问题</string>
-    <string name="please_wait">请稍等&#8230;</string>
-
-    <!-- login fragment -->
-    <string name="login_title">登录</string>
-    <string name="et_name_hint">帐号</string>
-    <string name="et_pwd_hint">密码</string>
-    <string name="btn_login">登  录</string>
-    <string name="invalid_name_pwd">用户名或密码错误</string>
-
-    <!-- calendar fragment -->
-    <string name="calendar_info" formatted="false">评分: %s / 排名: %s</string>
-
-    <!-- sublist fragment -->
-    <string name="btn_sublist_progress">进度</string>
-    <string name="sublist_sub" formatted="false">%s \n放送日期: %s</string>
-    <string name="sublist_empty">请到bangumi网站添加你的番组收藏</string>
-
-    <!-- subject detail -->
-    <string name="subject_refresh_success">番剧详情已更新</string>
-    <string name="subject_score" formatted="false">评分: %s, 评分人数: %d</string>
-    <string name="subject_summary" formatted="false">中文名: %s \n话数: %d \n放送开始: %s \n放送星期: %s</string>
-    <string name="subject_progress_air_info" formatted="false">时长: %s 放送日期: %s 讨论人数: %d</string>
-    <string name="no_air">还未放送</string>
-
-    <!-- about -->
-    <string name="logout_confirm">是否确认退出帐号?</string>
-    <string name="exitapp_confirm">是否确认退出app?</string>
-
-    <!-- update -->
     <string name="update">更新版本</string>
     <string name="up_to_date">已是最新版本</string>
     <string name="btn_update">更新</string>
 
-    <!-- label (TextView) -->
-    <string name="label_subject_summary">作品简介</string>
-    <string name="label_subject_date">放送日期</string>
-    <string name="label_subject_weekday">放送星期</string>
-    <string name="label_subject_crt">角色介绍</string>
-    <string name="label_subject_progress">观看进度</string>
-    <string name="label_subject_summary_staff">简介及制作人员</string>
-    <string name="label_subject_staff">制作人员</string>
-    <string name="label_subject_web">其他具体内容</string>
-    <string name="label_subject_type">类型</string>
-    <string name="label_subject_status">状态</string>
-    <string name="label_subject_rating">评分</string>
-    <string name="label_subject_comment">吐槽</string>
-    <string name="label_please_login_first">请先登录</string>
-    <string name="label_subject_status_default">暂无</string>
-    <string name="label_subject_rating_default">暂无</string>
-    <string name="label_subject_comment_default">暂无吐槽</string>
-    <string name="label_about_version">版本更新</string>
-    <string name="label_about_bangumi">关于我们</string>
-    <string name="label_about_bangumi_detail">Bangumi 是由 Sai 于桂林发起的 ACG 分享与交流项目，致力于让阿宅们在欣赏ACG作品之余拥有一个轻松便捷独特的交流与沟通环境。\n\n具体请登录 http://bangumi.tv/ 查询。</string>
-    <string name="label_about_app">关于本App</string>
-    <string name="label_about_app_detail">本 App 是非官方客户端，代码开源存放在 Github 上，无广告，无跟踪，无捆绑销售，可以放心使用。</string>
-    <string name="label_about_author">关于作者</string>
-    <string name="label_about_author_detail">程序+设计: scarletsky \n\n图片+启动图标: hotfloor </string>
-    
-    <string name="wish">想看</string>
-    <string name="queue">@string/wish</string>
+    <string name="progress">进度</string>
+    <string name="tv_sub" formatted="false">%s \n放送日期: %s</string>
+    <string name="user_collection_empty">请到bangumi网站添加你的番组收藏</string>
+
+    <!--  番剧详细信息 -->
+    <string name="subject_detail_type">类型</string>
+    <string name="subject_detail_summary">作品简介</string>
+    <string name="subject_detail_staff">制作人员及简介</string>
+    <string name="subject_detail_progress">观看进度</string>
+    <string name="subject_detail_crt">角色介绍</string>
+    <string name="subject_detail_rating">评分</string>
+    <string name="subject_error">番剧信息有误</string>
+    <string name="subject_score" formatted="false">评分: %s \n排名: %d\n评分人数: %d</string>
+    <string name="subject_info" formatted="false">中文名: %s \n话数: %d \n放送开始: %s \n放送星期: %s</string>
+    <string name="dialog_grade_title">你的追番信息</string>
+    <string name="dialog_grade_status">状态</string>
+    <string name="dialog_grade_rating">评分</string>
+    <string name="dialog_grade_comment">吐槽(最多200字)</string>
+    <string name="dialog_grade_comment_error">内容不能超过200字</string>
+    <string name="dialog_grade_tag_hint">要添加的标签，用空格分隔</string>
+    <string name="dialog_grade_privacy">是否公开评论</string>
+    <string name="comment_success">番剧评论已更新</string>
+
+    <!-- 番剧进度 -->
+    <string name="subject_progress_air_info" formatted="false">时长: %s 放送日期: %s 讨论人数: %d</string>
+    <string name="queue">想看</string>
     <string name="watched">看过</string>
     <string name="watching">在看</string>
     <string name="on_hold">搁置</string>
     <string name="drop">抛弃</string>
+    <string name="remove">撤销</string>
+    <string name="watched_here">看到这里</string>
     <string name="drop_collection">弃番</string>
-    <string name="undo">撤销</string>
+
+    <!-- 每日连载 -->
+    <string name="calendar_info" formatted="false">评分: %s / 排名: %s</string>
 </resources>

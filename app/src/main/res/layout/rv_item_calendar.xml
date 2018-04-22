@@ -15,7 +15,7 @@
         android:background="@drawable/touch_bg">
 
         <ImageView
-            android:id="@+id/calendar_img"
+            android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -24,18 +24,18 @@
             tools:targetApi="lollipop"/>
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/calendar_title"
             android:textSize="@dimen/text_body"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="4dp" />
 
         <TextView
+            android:id="@+id/rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/calendar_rank"
             android:paddingLeft="4dp"
             android:paddingBottom="10dp"
             android:textSize="@dimen/text_caption"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/square_touch_bg">
+    <ImageView
+        android:id="@+id/crt_img"
+        android:padding="5dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/crt_cv_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="12sp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/crt_cv_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@id/crt_cv_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/crt_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@id/crt_img"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toLeftOf="@id/crt_cv_img" />
+
+    <TextView
+        android:id="@+id/crt_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/crt_name"
+        app:layout_constraintLeft_toRightOf="@id/crt_img"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toLeftOf="@id/crt_cv_img" />
+</android.support.constraint.ConstraintLayout>

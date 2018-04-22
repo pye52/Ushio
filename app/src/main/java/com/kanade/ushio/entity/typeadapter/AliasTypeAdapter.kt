@@ -4,9 +4,7 @@ import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
-import com.kanade.ushio.entity.subject.Alias
-import com.kanade.ushio.entity.subject.RealmString
-import io.realm.RealmList
+import com.kanade.ushio.entity.Alias
 
 class AliasTypeAdapter : TypeAdapter<Alias>() {
     override fun read(input: JsonReader): Alias {
@@ -43,10 +41,10 @@ class AliasTypeAdapter : TypeAdapter<Alias>() {
     }
 
     private fun readAliasArray(input: JsonReader, alias: Alias) {
-        val list = RealmList<RealmString>()
+        val list = arrayListOf<String>()
         input.beginArray()
         while (input.hasNext()) {
-            list.add(RealmString(input.nextString()))
+            list.add(input.nextString())
         }
         input.endArray()
         alias.aliasString = list

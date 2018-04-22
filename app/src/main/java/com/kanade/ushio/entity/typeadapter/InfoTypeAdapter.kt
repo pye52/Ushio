@@ -4,9 +4,7 @@ import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
-import com.kanade.ushio.entity.subject.Info
-import com.kanade.ushio.entity.subject.RealmString
-import io.realm.RealmList
+import com.kanade.ushio.entity.Info
 
 class InfoTypeAdapter : TypeAdapter<Info>() {
     private var aliasTypeAdapter = AliasTypeAdapter()
@@ -44,7 +42,9 @@ class InfoTypeAdapter : TypeAdapter<Info>() {
         out.beginObject()
         out.name("name_cn").value(value.nameCn)
         out.name("alias")
-        aliasTypeAdapter.write(out, value.alias)
+        value.alias?.let {
+            aliasTypeAdapter.write(out, it)
+        }
         out.name("gender").value(value.gender)
         out.name("birth").value(value.birth)
         out.name("height").value(value.height)
@@ -53,24 +53,24 @@ class InfoTypeAdapter : TypeAdapter<Info>() {
         out.name("bloodtype").value(value.bloodtype)
         out.name("source")
         out.beginArray()
-        value.source.forEach { out.value(it.realmString) }
+        value.source?.forEach { out.value(it) }
         out.endArray()
         out.endObject()
     }
 
     private fun readSourceArray(input: JsonReader, info: Info) {
         input.beginArray()
-        val list = RealmList<RealmString>()
+        val list = arrayListOf<String>()
         while (input.hasNext()) {
-            list.add(RealmString(input.nextString()))
+            list.add(input.nextString())
         }
         input.endArray()
         info.source = list
     }
 
     private fun readSourceString(input: JsonReader, info: Info) {
-        val list = RealmList<RealmString>()
-        list.add(RealmString(input.nextString()))
+        val list = arrayListOf<String>()
+        list.add(input.nextString())
         info.source = list
     }
 }

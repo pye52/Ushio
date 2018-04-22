@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/base_padding"
-    android:layout_width="match_parent"
+    android:layout_width="400dp"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/label_primary"
-        android:text="@string/label_subject_status"/>
+        style="@style/dialog_grade_tv"
+        android:text="@string/dialog_grade_status"/>
 
     <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/subject_grade_sp"
+        android:id="@+id/sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
@@ -23,11 +23,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/label_primary"
-        android:text="@string/label_subject_rating" />
+        style="@style/dialog_grade_tv"
+        android:text="@string/dialog_grade_rating" />
 
     <com.xw.repo.BubbleSeekBar
-        android:id="@+id/subject_grade_sb"
+        android:id="@+id/bsb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/base_padding"
@@ -36,16 +36,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/label_primary"
-        android:text="@string/label_subject_comment" />
+        style="@style/dialog_grade_tv"
+        android:text="@string/dialog_grade_comment" />
 
     <EditText
-        android:id="@+id/subject_grade_et"
+        android:id="@+id/comment_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|top"
         android:padding="4dp"
-        android:lines="6"
-        android:maxLines="6"
+        android:lines="3"
+        android:maxLines="3"
         android:background="@drawable/shape_square_normal"/>
+
+    <EditText
+        android:id="@+id/tag_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_grade_tag_hint"/>
+
+    <CheckBox
+        android:id="@+id/privacy_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_grade_privacy"
+        android:checked="true" />
 </LinearLayout>
