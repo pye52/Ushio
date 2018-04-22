@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:id="@+id/subject_ep_sort"
+<TextView android:id="@+id/subject_ep"
     android:layout_width="45dp"
     android:layout_height="45dp"
     android:gravity="center"

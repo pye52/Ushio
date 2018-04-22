@@ -1,10 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!-- Customize your theme here. -->
         <item name="android:windowBackground">@null</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">@color/primary</item>
@@ -12,8 +9,8 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
-    <style name="TransparentStatusTheme" parent="AppTheme">
-        <item name="android:windowBackground">@android:color/transparent</item>
+    <style name="ToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -29,62 +26,6 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="ToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="subject_detail_text">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="subject_detail_body_label">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">4dp</item>
-        <item name="android:paddingRight">4dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:layout_marginTop">@dimen/base_padding</item>
-        <item name="sLeftIconHeight">20dp</item>
-        <item name="sLeftIconWidth">20dp</item>
-        <item name="sLineShow">none</item>
-    </style>
-
-    <style name="subject_detail_body_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="sLeftIconHeight">20dp</item>
-        <item name="sLeftIconWidth">20dp</item>
-        <item name="sLineShow">none</item>
-    </style>
-
-    <style name="subject_detail_item">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-    </style>
-
-    <style name="subject_crt_info">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-    </style>
-
-    <!-- 搜索页面 -->
     <style name="text_main">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -106,27 +47,44 @@
         <item name="android:gravity">start</item>
     </style>
 
-    <!-- about -->
-    <style name="about_textview">
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:padding">14dp</item>
+    <style name="subject_detail_img">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
-    <!-- label -->
-    <style name="label_primary">
+    <style name="subject_detail_tv">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="subject_detail_body_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="subject_detail_cover_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="dialog_grade_tv">
         <item name="android:textColor">@color/primary</item>
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:gravity">start</item>
         <item name="android:paddingBottom">@dimen/base_padding</item>
     </style>
-
-    <style name="text_primary">
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">@dimen/text_body</item>
-        <item name="android:paddingBottom">@dimen/base_padding</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>

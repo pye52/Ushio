@@ -12,57 +12,123 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.allen.library.SuperTextView
-                app:sLeftIconRes="@drawable/ic_type"
-                app:sLeftTextString="@string/label_subject_type"
-                style="@style/subject_detail_body_label"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+                <ImageView
+                    style="@style/subject_detail_img"
+                    android:src="@drawable/ic_type"/>
 
+                <TextView
+                    style="@style/subject_detail_tv"
+                    android:text="@string/subject_detail_type"/>
+            </LinearLayout>
+            
             <TextView
-                android:id="@+id/subject_type"
+                android:id="@+id/subject_detail_type"
                 style="@style/subject_detail_body_text"/>
 
-            <com.allen.library.SuperTextView
-                android:id="@+id/label_subject_story_summary"
-                app:sLeftIconRes="@drawable/ic_story_summary"
-                app:sLeftTextString="@string/label_subject_summary"
-                style="@style/subject_detail_body_label"/>
+            <LinearLayout
+                android:id="@+id/subject_detail_summary_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+                <ImageView
+                    style="@style/subject_detail_img"
+                    android:src="@drawable/ic_summary"/>
+
+                <TextView
+                    style="@style/subject_detail_tv"
+                    android:text="@string/subject_detail_summary"/>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/subject_story_summary"
+                android:id="@+id/subject_detail_summary"
                 style="@style/subject_detail_body_text"/>
 
-            <com.allen.library.SuperTextView
-                android:id="@+id/label_subject_summary_staff"
-                app:sLeftIconRes="@drawable/ic_summary"
-                app:sLeftTextString="@string/label_subject_summary_staff"
-                app:sRightTextString="@string/more"
-                app:sRightTextColor="@color/grey_500"
-                app:sUseRipple="true"
-                style="@style/subject_detail_body_label"/>
+            <LinearLayout
+                android:id="@+id/subject_detail_staff_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+                <ImageView
+                    style="@style/subject_detail_img"
+                    android:src="@drawable/ic_staff"/>
+
+                <TextView
+                    style="@style/subject_detail_tv"
+                    android:text="@string/subject_detail_staff"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:paddingRight="4dp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/subject_summary"
-                style="@style/subject_detail_body_text"
-                android:layout_marginBottom="16dp"/>
+                android:id="@+id/subject_detail_staff"
+                style="@style/subject_detail_body_text"/>
 
-            <com.allen.library.SuperTextView
-                android:id="@+id/label_subject_progress"
-                app:sLeftIconRes="@drawable/ic_progress"
-                app:sLeftTextString="@string/label_subject_progress"
-                app:sRightTextString="@string/more"
-                app:sRightTextColor="@color/grey_500"
-                app:sUseRipple="true"
-                style="@style/subject_detail_body_label"
-                android:paddingBottom="0dp"/>
+            <LinearLayout
+                android:id="@+id/subject_detail_progress_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+                <ImageView
+                    style="@style/subject_detail_img"
+                    android:src="@drawable/ic_progress"/>
 
-            <com.allen.library.SuperTextView
-                android:id="@+id/label_subject_crt"
-                app:sLeftIconRes="@drawable/ic_crt"
-                app:sLeftTextString="@string/label_subject_crt"
-                app:sRightTextString="@string/more"
-                app:sRightTextColor="@color/grey_500"
-                app:sUseRipple="true"
-                style="@style/subject_detail_body_label"/>
+                <TextView
+                    style="@style/subject_detail_tv"
+                    android:text="@string/subject_detail_progress"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:paddingRight="4dp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/subject_detail_crt_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+                <ImageView
+                    style="@style/subject_detail_img"
+                    android:src="@drawable/ic_crt"/>
+
+                <TextView
+                    style="@style/subject_detail_tv"
+                    android:text="@string/subject_detail_crt"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:paddingRight="4dp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_crt"

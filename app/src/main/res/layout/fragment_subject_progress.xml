@@ -6,7 +6,7 @@
     <include layout="@layout/toolbar"/>
 
     <com.kanade.ushio.ui.widget.AutofitRecyclerView
-        android:id="@+id/rv_progress"
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnWidth="60dp"

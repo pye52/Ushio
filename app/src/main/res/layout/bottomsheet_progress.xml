@@ -20,12 +20,12 @@
         android:padding="@dimen/base_padding"/>
 
     <TextView
-        android:id="@+id/pw_ep_wish"
+        android:id="@+id/pw_ep_queue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/base_padding"
         android:background="@drawable/touch_bg"
-        android:text="@string/wish"/>
+        android:text="@string/queue"/>
 
     <TextView
         android:id="@+id/pw_ep_watched"
@@ -44,10 +44,18 @@
         android:text="@string/drop"/>
 
     <TextView
-        android:id="@+id/pw_ep_undo"
+        android:id="@+id/pw_ep_watched_here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/base_padding"
         android:background="@drawable/touch_bg"
-        android:text="@string/undo"/>
+        android:text="@string/watched_here"/>
+
+    <TextView
+        android:id="@+id/pw_ep_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        android:background="@drawable/touch_bg"
+        android:text="@string/remove"/>
 </LinearLayout>
