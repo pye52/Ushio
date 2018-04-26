@@ -13,7 +13,9 @@ object ApiManager {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
+                .authenticator(TokenAuthenticator())
                 .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(TokenInterceptor())
                 .addInterceptor(AuthInterceptor())
                 .build()
 

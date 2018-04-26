@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.subject.staff
+package com.kanade.ushio.ui.subject
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.kanade.ushio.R
 import com.kanade.ushio.adapter.SubjectStaffAdapter
 import com.kanade.ushio.entity.Staff
-import com.kanade.ushio.utils.strFilter
 import kotlinx.android.synthetic.main.fragment_subject_staff.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.yokeyword.fragmentation.SupportFragment

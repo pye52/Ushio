@@ -7,22 +7,22 @@ import io.reactivex.Flowable
 import io.reactivex.Maybe
 
 @Dao
-interface SmallSubjectDao {
+interface UserCollectionDao {
     @Query("select * from UserCollection")
-    fun querySmallSubject(): Flowable<List<UserCollection>>
+    fun queryUserCollection(): Flowable<List<UserCollection>>
 
     @Query("select * from UserCollection where id = :id")
-    fun querySmallSubject(id: Int): Maybe<UserCollection>
+    fun queryUserCollection(id: Int): Maybe<UserCollection>
 
     @Delete
-    fun deleteSmallSubject(subject: UserCollection): Int
+    fun deleteUserCollection(collection: UserCollection): Int
 
     @Insert(onConflict = REPLACE)
-    fun insertSmallSubject(subject: UserCollection): Long
+    fun insertUserCollection(collection: UserCollection): Long
 
     @Insert(onConflict = REPLACE)
-    fun insertSmallSubject(list: List<UserCollection>)
+    fun insertUserCollection(list: List<UserCollection>)
 
     @Update
-    fun updateSmallSubject(subject: UserCollection): Int
+    fun updateUserCollection(collection: UserCollection): Int
 }

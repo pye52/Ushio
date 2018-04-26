@@ -1,10 +1,7 @@
 package com.kanade.ushio.arch
 
 import com.kanade.ushio.api.*
-import com.kanade.ushio.arch.factory.SubjectDetailViewModelFactory
-import com.kanade.ushio.arch.factory.SubjectProgressViewModelFactory
-import com.kanade.ushio.arch.factory.UserCollectionViewModelFactory
-import com.kanade.ushio.arch.factory.UserTokenDaoViewModelFactory
+import com.kanade.ushio.arch.factory.*
 import com.kanade.ushio.arch.repository.ActorRepository
 import com.kanade.ushio.arch.repository.CrtRepository
 import com.kanade.ushio.arch.repository.EpRepository
@@ -19,27 +16,15 @@ object Injection {
     fun provideUserTokenViewModelFactory(): UserTokenDaoViewModelFactory {
         val dataSource = AppDatabase.getInstance().userTokenDao()
         // 由于登录部分的base url与api不同，因此这里需要构建一个新的retrofit对象
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder()
-                .addInterceptor(httpLoggingInterceptor)
-                .build()
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://bgm.tv/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(client)
-                .build()
-        val service = retrofit.create(AuthService::class.java)
+        val service = provideLoginService()
         return UserTokenDaoViewModelFactory(service, dataSource)
     }
 
     fun provideUserCollectionViewModelFactory(): UserCollectionViewModelFactory {
-        val smallSubjectDao = AppDatabase.getInstance().smallSubjectDao()
+        val userCollectionDao = AppDatabase.getInstance().userCollectionDao()
         val subjectDao = AppDatabase.getInstance().subjectDao()
         val service = ApiManager.retrofit.create(UserCollectionService::class.java)
-        return UserCollectionViewModelFactory(service, smallSubjectDao, subjectDao)
+        return UserCollectionViewModelFactory(service, userCollectionDao, subjectDao)
     }
 
     fun provideSubjectDetailViewModelFactory(): SubjectDetailViewModelFactory {
@@ -60,6 +45,15 @@ object Injection {
         return SubjectProgressViewModelFactory(service, epRepo)
     }
 
+    fun provideCalendarViewModelFactory(): CalendarViewModelFactory {
+        val service = ApiManager.retrofit.create(SubjectService::class.java)
+        val userCollectionDao = AppDatabase.getInstance().userCollectionDao()
+        val userCollectionService = ApiManager.retrofit.create(UserCollectionService::class.java)
+        val calendarDao = AppDatabase.getInstance().calendarDao()
+        val calendarSubjectDao = AppDatabase.getInstance().calendarSubjectDao()
+        return CalendarViewModelFactory(service, userCollectionDao, userCollectionService, calendarDao, calendarSubjectDao)
+    }
+
     fun provideSubjectRepository(): SubjectRepository {
         val actDao = AppDatabase.getInstance().actorDao()
         val actRepo = ActorRepository(actDao)
@@ -69,5 +63,22 @@ object Injection {
         val epRepo = EpRepository(epDao)
         val service = ApiManager.retrofit.create(SubjectService::class.java)
         return SubjectRepository(service, crtRepo, epRepo)
+    }
+
+    fun provideLoginService(): AuthService {
+        // 由于登录部分的base url与api不同，因此这里需要构建一个新的retrofit对象
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build()
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl("https://bgm.tv/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(client)
+                .build()
+        return retrofit.create(AuthService::class.java)
     }
 }

@@ -1,19 +1,11 @@
 package com.kanade.ushio.entity
 
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(foreignKeys = [
-    (ForeignKey(entity = Subject::class,
-            parentColumns = ["id"],
-            childColumns = ["subjectId"])),
-    (ForeignKey(entity = UserCollection::class,
-            parentColumns = ["id"],
-            childColumns = ["subjectId"]))
-])
+@Entity
 data class Ep(
         @PrimaryKey
         var id: Long = 0,

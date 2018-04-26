@@ -13,17 +13,21 @@ import com.kanade.ushio.entity.*
     Subject::class,
     Ep::class,
     Actor::class,
-    Crt::class
+    Crt::class,
+    CalendarSubject::class,
+    Calendar::class
 ],
         version = 1,
         exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userTokenDao(): UserTokenDao
-    abstract fun smallSubjectDao(): SmallSubjectDao
+    abstract fun userCollectionDao(): UserCollectionDao
     abstract fun subjectDao(): SubjectDao
     abstract fun epDao(): EpDao
     abstract fun actorDao(): ActorDao
     abstract fun crtDao(): CrtDao
+    abstract fun calendarSubjectDao(): CalendarSubjectDao
+    abstract fun calendarDao(): CalendarDao
 
     companion object {
 

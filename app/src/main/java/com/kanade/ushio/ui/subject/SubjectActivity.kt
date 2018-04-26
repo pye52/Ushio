@@ -6,9 +6,6 @@ import android.os.Bundle
 import com.kanade.ushio.R
 import com.kanade.ushio.entity.Crt
 import com.kanade.ushio.entity.Staff
-import com.kanade.ushio.ui.subject.crt.SubjectCrtFragment
-import com.kanade.ushio.ui.subject.progress.SubjectProgressFragment
-import com.kanade.ushio.ui.subject.staff.SubjectStaffFragment
 import me.yokeyword.fragmentation.SupportActivity
 
 class SubjectActivity : SupportActivity() {

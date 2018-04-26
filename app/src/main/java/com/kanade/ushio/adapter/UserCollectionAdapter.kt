@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.user_collection
+package com.kanade.ushio.adapter
 
 import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter

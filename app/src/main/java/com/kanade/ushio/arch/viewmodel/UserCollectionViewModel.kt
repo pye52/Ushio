@@ -9,15 +9,18 @@ import io.reactivex.Flowable
 class UserCollectionViewModel(private var repository: UserCollectionRepository) : ViewModel() {
 
     fun queryCollection(): Flowable<List<UserCollection>> {
-        return Flowable.concat(
-                queryCollectionFromServer(),
-                queryCollectionFromLocal())
-                .filter { it.isNotEmpty() }
-                .take(1)
+        return repository.queryAllUserCollection()
+                .flatMap { list ->
+                    if (list.isEmpty()) {
+                        return@flatMap queryCollectionFromServer()
+                    } else {
+                        Flowable.just(list)
+                    }
+                }
     }
 
-    private fun queryCollectionFromLocal(): Flowable<List<UserCollection>> {
-        return repository.queryAllSmallSubject()
+    fun queryCollectionFromLocal(): Flowable<List<UserCollection>> {
+        return repository.queryAllUserCollection()
     }
 
     private fun queryCollectionFromServer(): Flowable<List<UserCollection>> {
@@ -28,7 +31,7 @@ class UserCollectionViewModel(private var repository: UserCollectionRepository) 
                         ss.subject?.let {
                             repository.insertSubject(it)
                         }
-                        repository.insertSmallSubject(ss)
+                        repository.insertUserCollection(ss)
                     }
                 }
     }

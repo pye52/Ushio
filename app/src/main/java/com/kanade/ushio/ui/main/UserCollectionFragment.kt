@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.user_collection
+package com.kanade.ushio.ui.main
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,14 +9,16 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.blankj.utilcode.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.kanade.ushio.R
+import com.kanade.ushio.adapter.UserCollectionAdapter
 import com.kanade.ushio.arch.AppDatabase
 import com.kanade.ushio.arch.Injection
 import com.kanade.ushio.arch.viewmodel.UserCollectionViewModel
 import com.kanade.ushio.ui.subject.SubjectActivity
-import com.kanade.ushio.ui.subject.detail.SubjectDetailActivity
+import com.kanade.ushio.ui.subject.SubjectDetailActivity
 import com.kanade.ushio.utils.IO2MainThread
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -31,7 +33,7 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
 
     companion object {
         @JvmStatic
-        fun newInstance() = UserCollectionFragment()
+        fun newIntent() = UserCollectionFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -75,11 +77,12 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
                         .IO2MainThread()
                         .doOnSubscribe { srl.isRefreshing = true }
                         .subscribeOn(AndroidSchedulers.mainThread())
-                        .doOnComplete { srl.isRefreshing = false }
                         .subscribe ({
+                            srl.isRefreshing = false
                             adapter.setNewData(it)
                         }, {
                             srl.isRefreshing = false
+                            it.printStackTrace()
                         })
         )
     }
@@ -92,7 +95,6 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
         }
 
         override fun onItemChildClick(a: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-            super.onItemChildClick(adapter, view, position)
             val item = adapter.getItem(position) ?: return
             val intent = SubjectActivity.progressIntent(context, item.id)
             startActivity(intent)

@@ -21,21 +21,7 @@ class LoginViewModel(private val service: AuthService, private var repository: U
                         // 保存到本地
                         repository.insertUserToken(token)
                         // 保存用户id和登录时间
-                        saveUserToken(token.token)
                         saveUserId(token.userId)
-                        saveLastLoginTime(System.currentTimeMillis())
-                    }
-                }
-    }
-
-    fun refresh(refreshToken: String): Flowable<UserToken> {
-        return service.refresh("refresh_token", APP_ID, APP_SECRET, refreshToken, REDIRECT_URI)
-                .doOnNext { token ->
-                    if (token != null) {
-                        // 更新本地的数据
-                        repository.updateUserToken(token)
-                        saveUserToken(token.token)
-                        saveLastLoginTime(System.currentTimeMillis())
                     }
                 }
     }

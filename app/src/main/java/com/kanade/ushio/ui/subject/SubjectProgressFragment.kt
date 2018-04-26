@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.subject.progress
+package com.kanade.ushio.ui.subject
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -95,6 +95,8 @@ class SubjectProgressFragment : SupportFragment(), EpBottomDialog.onBottomClickL
                                 processDialogs.dismiss()
                                 LogUtils.file(it.message)
                                 ToastUtils.showLong(R.string.net_error)
+                            }, {
+                                processDialogs.dismiss()
                             })
 
             )

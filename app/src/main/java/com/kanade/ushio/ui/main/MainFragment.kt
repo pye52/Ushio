@@ -3,7 +3,6 @@ package com.kanade.ushio.ui.main
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,9 +10,7 @@ import android.view.ViewGroup
 import com.github.javiersantos.appupdater.AppUpdater
 import com.github.javiersantos.appupdater.enums.UpdateFrom
 import com.kanade.ushio.R
-import com.kanade.ushio.R.id.bottomNv
 import com.kanade.ushio.adapter.MainVpAdapter
-import com.kanade.ushio.ui.user_collection.UserCollectionFragment
 import com.kanade.ushio.utils.UPDATE_PATH
 import kotlinx.android.synthetic.main.fragment_main.*
 import me.yokeyword.fragmentation.SupportFragment
@@ -59,7 +56,8 @@ class MainFragment : SupportFragment(){
 
     override fun onEnterAnimationEnd(savedInstanceState: Bundle?) {
         val fragmentList = listOf<SupportFragment>(
-                UserCollectionFragment.newInstance()
+                UserCollectionFragment.newIntent(),
+                CalendarFragment.newIntent()
         )
         bottomNv.setOnNavigationItemSelectedListener(listener)
         vp.adapter = MainVpAdapter(fragmentList, childFragmentManager)

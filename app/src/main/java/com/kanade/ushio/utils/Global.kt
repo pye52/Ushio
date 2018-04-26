@@ -5,7 +5,10 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
+import com.kanade.ushio.entity.UserToken
 import java.util.regex.Pattern
+
+var UshioToken: UserToken? = null
 
 const val APP_ID = "bgm1535abdd9b4406b1"
 const val APP_SECRET = "d387ed984cc76959efcc2376459d32fd"

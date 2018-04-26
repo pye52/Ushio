@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.subject.detail
+package com.kanade.ushio.ui.subject
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -28,7 +28,6 @@ import com.kanade.ushio.adapter.SubjectProgressAdapter
 import com.kanade.ushio.arch.Injection
 import com.kanade.ushio.arch.viewmodel.SubjectDetailViewModel
 import com.kanade.ushio.entity.LargeSubject
-import com.kanade.ushio.ui.subject.SubjectActivity
 import com.kanade.ushio.ui.widget.GridSpacingItemDecoration
 import com.kanade.ushio.ui.widget.SubjectGradeDialog
 import com.kanade.ushio.utils.GlideApp
@@ -124,6 +123,7 @@ class SubjectDetailActivity : SupportActivity(), View.OnClickListener, SubjectGr
                             initEpsView(subject)
                             initImageView(subject)
                         }, {
+                            it.printStackTrace()
                             LogUtils.file(it.message)
                             processDialogs.dismiss()
                         })

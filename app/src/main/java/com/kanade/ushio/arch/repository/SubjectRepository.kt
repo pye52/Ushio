@@ -2,6 +2,7 @@ package com.kanade.ushio.arch.repository
 
 import com.kanade.ushio.api.SubjectService
 import com.kanade.ushio.arch.AppDatabase
+import com.kanade.ushio.entity.Calendar
 import com.kanade.ushio.entity.Ep
 import com.kanade.ushio.entity.LargeSubject
 import com.kanade.ushio.entity.SubjectCollection
@@ -50,5 +51,12 @@ class SubjectRepository(private var service: SubjectService,
 
     fun updateSubject(subjectId: Long, status: String, comment: String, tags: String, rating: Int, privacy: Int): Flowable<SubjectCollection> {
         return service.updateSubject(subjectId, status, comment, tags, rating, privacy)
+    }
+
+    fun queryCalendarSubject(): Flowable<List<Calendar>> {
+        return service.queryCalendar()
+                .doOnNext {
+
+                }
     }
 }

@@ -18,7 +18,6 @@ import com.kanade.ushio.arch.factory.UserTokenDaoViewModelFactory
 import com.kanade.ushio.ui.main.MainActivity
 import com.kanade.ushio.utils.*
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var factory: UserTokenDaoViewModelFactory
@@ -59,22 +58,9 @@ class LoginActivity : AppCompatActivity() {
                         processDialogs.show()
                     }
                     .subscribeOn(AndroidSchedulers.mainThread())
-                    .filter { token ->
-                        val lastLoginTime = getLastLoginTime()
-                        val currentTime = System.currentTimeMillis()
-                        // 注意单位，本地保存的是毫秒，而token的是秒
-                        // 过期则提示用户重新登录
-                        if ((lastLoginTime - currentTime) < (token.expires * 1000)) {
-                            // 未过期则不需要刷新，直接跳转即可
-                            MainActivity.startActivity(this)
-                            return@filter false
-                        } else {
-                            return@filter true
-                        }
-                    }
-                    .observeOn(Schedulers.io())
-                    .subscribe ({
-                        refreshToken(it.refreshToken)
+                    .subscribe ({ token ->
+                        UshioToken = token
+                        MainActivity.startActivity(this)
                     }, {
                         processDialogs.dismiss()
                         ToastUtils.showLong(R.string.net_error)
@@ -84,20 +70,6 @@ class LoginActivity : AppCompatActivity() {
                     }))
         }
         // 以上条件都不符合则说明未在本机登录过，不作任何动作
-    }
-
-    private fun refreshToken(refreshToken: String) {
-        disposable.add(
-                viewModel.refresh(refreshToken)
-                        .IO2MainThread()
-                        .subscribe ({
-                            // 跳转到主界面
-                            MainActivity.startActivity(this)
-                        }, {
-                            processDialogs.dismiss()
-                            ToastUtils.showLong(R.string.net_error)
-                            LogUtils.file(it.message)
-                        }))
     }
 
     private fun loginByBrowser() {
@@ -111,9 +83,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe({ token ->
-                    if (token != null) {
-                        MainActivity.startActivity(this)
-                    }
+                    UshioToken = token
+                    MainActivity.startActivity(this)
                 }, {
                     processDialogs.dismiss()
                     ToastUtils.showLong(R.string.net_error)

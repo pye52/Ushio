@@ -15,7 +15,7 @@ interface AuthService {
 
     @FormUrlEncoded
     @POST("/oauth/access_token")
-    fun refresh(@Field("grant_type") type: String, @Field("client_id") id: String,
-                         @Field("client_secret") secret: String, @Field("refresh_token") refreshToken: String,
-                         @Field("redirect_uri") uri: String): Flowable<UserToken>
+    fun refreshSync(@Field("grant_type") type: String, @Field("client_id") id: String,
+                    @Field("client_secret") secret: String, @Field("refresh_token") refreshToken: String,
+                    @Field("redirect_uri") uri: String): retrofit2.Call<UserToken>
 }

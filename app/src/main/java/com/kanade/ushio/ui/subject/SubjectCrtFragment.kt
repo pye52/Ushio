@@ -1,4 +1,4 @@
-package com.kanade.ushio.ui.subject.crt
+package com.kanade.ushio.ui.subject
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager

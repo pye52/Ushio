@@ -1,5 +1,6 @@
 package com.kanade.ushio.api
 
+import com.kanade.ushio.entity.Calendar
 import com.kanade.ushio.entity.LargeSubject
 import com.kanade.ushio.entity.SubjectCollection
 import io.reactivex.Flowable
@@ -19,4 +20,7 @@ interface SubjectService {
 
     @GET("/collection/{subjectId}")
     fun querySubjectCollection(@Path("subjectId") subjectId: Long): Flowable<SubjectCollection>
+
+    @GET("/calendar")
+    fun queryCalendar(): Flowable<List<Calendar>>
 }
