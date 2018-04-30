@@ -14,6 +14,7 @@ data class Status (
         @SerializedName("cn_name")
         var cnName: String? = ""
 )
+
 data class WatchStatus(
         // 剧集id
         @SerializedName("id")

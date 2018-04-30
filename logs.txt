@@ -1,0 +1,56 @@
+Parallel execution with configuration on demand is an incubating feature.
+:app:preBuild UP-TO-DATE
+:app:preDebugBuild UP-TO-DATE
+:app:compileDebugAidl UP-TO-DATE
+:app:compileDebugRenderscript UP-TO-DATE
+:app:checkDebugManifest UP-TO-DATE
+:app:generateDebugBuildConfig UP-TO-DATE
+:app:mainApkListPersistenceDebug UP-TO-DATE
+:app:generateDebugResValues UP-TO-DATE
+:app:generateDebugResources UP-TO-DATE
+:app:mergeDebugResources UP-TO-DATE
+:app:createDebugCompatibleScreenManifests UP-TO-DATE
+:app:processDebugManifest UP-TO-DATE
+:app:splitsDiscoveryTaskDebug UP-TO-DATE
+:app:processDebugResources UP-TO-DATE
+:app:kaptGenerateStubsDebugKotlin UP-TO-DATE
+:app:kaptDebugKotlin
+w: 警告: 来自注释处理程序 'org.jetbrains.kotlin.kapt3.ProcessorWrapper' 的受支持 source 版本 'RELEASE_7' 低于 -source '1.8'
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Image.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Image implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Ep.java:7: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Ep {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Ep.java:7: 警告: subjectId column references a foreign key but it is not part of an index. This may trigger full table scans whenever parent table is modified so you are highly advised to create an index that covers this column.
+public final class Ep {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Ep.java:7: 警告: subjectId column references a foreign key but it is not part of an index. This may trigger full table scans whenever parent table is modified so you are highly advised to create an index that covers this column.
+public final class Ep {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Image.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Image implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Actor.java:7: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Actor implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Image.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Image implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Alias.java:8: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Alias implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Info.java:8: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Info implements android.os.Parcelable {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Count.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Count {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Rating.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Rating {
+             ^
+w: F:\Git\Ushio\app\build\tmp\kapt3\stubs\debug\com\kanade\ushio\entity\Image.java:6: 警告: There are multiple good constructors and Room will pick the no-arg constructor. You can use the @Ignore annotation to eliminate unwanted constructors.
+public final class Image implements android.os.Parcelable {
+             ^
+:app:kaptDebugKotlin FAILED
+14 actionable tasks: 1 executed, 13 up-to-date

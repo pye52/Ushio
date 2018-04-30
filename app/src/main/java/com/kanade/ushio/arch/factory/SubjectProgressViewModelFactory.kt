@@ -9,12 +9,11 @@ import com.kanade.ushio.arch.repository.UserTokenRepository
 import com.kanade.ushio.arch.room.UserTokenDao
 import com.kanade.ushio.arch.viewmodel.SubjectProgressViewModel
 
-class SubjectProgressViewModelFactory(private var service: SubjectProgressService,
+class SubjectProgressViewModelFactory(private var subjectRepo: SubjectProgressRepository,
                                       private var epRepo: EpRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SubjectProgressViewModel::class.java)) {
-            val repository = SubjectProgressRepository(service)
-            return SubjectProgressViewModel(repository, epRepo) as T
+            return SubjectProgressViewModel(subjectRepo, epRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

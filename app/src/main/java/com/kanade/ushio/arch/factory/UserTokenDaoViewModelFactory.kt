@@ -26,11 +26,10 @@ import com.kanade.ushio.arch.viewmodel.LoginViewModel
 /**
  * Factory for ViewModels
  */
-class UserTokenDaoViewModelFactory(private val service: AuthService, private val dataSource: UserTokenDao) : ViewModelProvider.Factory {
+class UserTokenDaoViewModelFactory(private val service: AuthService, private val userTokenRepo: UserTokenRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            val repository = UserTokenRepository(dataSource)
-            return LoginViewModel(service, repository) as T
+            return LoginViewModel(service, userTokenRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

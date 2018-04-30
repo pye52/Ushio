@@ -23,7 +23,9 @@ import com.kanade.ushio.entity.Calendar
 import com.kanade.ushio.entity.CalendarSection
 import com.kanade.ushio.ui.subject.SubjectDetailActivity
 import com.kanade.ushio.utils.IO2MainThread
+import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.yokeyword.fragmentation.SupportFragment
@@ -32,7 +34,8 @@ import java.util.*
 class CalendarFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
     private lateinit var adapter: CalendarAdapter
     private lateinit var viewModel: CalendarViewModel
-    private val disposable = CompositeDisposable()
+    private var refreshDisposable: Disposable? = null
+    private var updateDisposable: Disposable? = null
 
     companion object {
         @JvmStatic
@@ -58,17 +61,16 @@ class CalendarFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener
         rv.addOnItemTouchListener(listener)
         rv.adapter = adapter
 
-        disposable.add(
-                viewModel.queryCalendar()
-                        .IO2MainThread()
-                        .subscribe({
-                            initRecyclerView(it)
-                        }, {
-                            it.printStackTrace()
-                            LogUtils.file(it.message)
-                            ToastUtils.showLong(R.string.net_error)
-                        })
-        )
+        refreshDisposable = viewModel.queryCalendar()
+                .IO2MainThread()
+                .subscribe({
+                    initRecyclerView(it)
+                    LogUtils.e("执行了一次")
+                }, {
+                    it.printStackTrace()
+                    LogUtils.file(it.message)
+                    ToastUtils.showLong(R.string.net_error)
+                })
     }
 
     private fun initRecyclerView(it: List<Calendar>) {
@@ -89,22 +91,22 @@ class CalendarFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener
     }
 
     override fun onRefresh() {
-        disposable.add(
-                viewModel.queryCalendarFromServer()
-                        .IO2MainThread()
-                        .subscribe({
-                            initRecyclerView(it)
-                        }, {
-                            it.printStackTrace()
-                            LogUtils.file(it.message)
-                            ToastUtils.showLong(R.string.net_error)
-                        })
-        )
+        refreshDisposable?.dispose()
+        refreshDisposable = viewModel.queryCalendar()
+                .IO2MainThread()
+                .subscribe({
+                    initRecyclerView(it)
+                    LogUtils.e("onRefresh执行了一次")
+                }, {
+                    it.printStackTrace()
+                    ToastUtils.showLong(R.string.net_error)
+                })
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        disposable.dispose()
+        refreshDisposable?.dispose()
+        updateDisposable?.dispose()
     }
 
     private val listener = object : OnItemClickListener() {
@@ -120,16 +122,16 @@ class CalendarFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener
 
         override fun onItemChildClick(a: BaseQuickAdapter<*, *>, view: View?, position: Int) {
             val item = adapter.getItem(position) ?: return
-            disposable.add(
-                    viewModel.updateSubjectAction(item.t)
-                            .IO2MainThread()
-                            .subscribe({
-                                adapter.notifyItemChanged(position)
-                            }, {
-                                it.printStackTrace()
-                                LogUtils.file(it.message)
-                                ToastUtils.showLong(R.string.net_error)
-                            }))
+            updateDisposable?.dispose()
+            updateDisposable = viewModel.updateSubjectAction(item.t)
+                    .IO2MainThread()
+                    .subscribe({
+                        adapter.notifyItemChanged(position)
+                    }, {
+                        it.printStackTrace()
+                        LogUtils.file(it.message)
+                        ToastUtils.showLong(R.string.net_error)
+                    })
         }
     }
 }

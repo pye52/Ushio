@@ -2,7 +2,6 @@ package com.kanade.ushio.entity
 
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
@@ -27,5 +26,28 @@ data class Subject(
         @SerializedName("air_weekday")
         var airWeekday: Int,
         @Embedded
-        var images: Image
+        var images: Image? = null,
+        @Embedded
+        var rating: Rating? = null,
+        var rank: Int = 0,
+        @Embedded
+        var collection: Collection? = null,
+        // 0 => 未追番 1 => 已追番
+        var hold: Int = 0
+) {
+    fun holdSubject() {
+        hold = 1
+    }
+
+    fun dropSubject() {
+        hold = 0
+    }
+
+    fun onHold(): Boolean {
+        return hold == 1
+    }
+}
+
+data class Collection(
+        var doing: Int = 0
 )

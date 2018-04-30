@@ -10,13 +10,14 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.kanade.ushio.R
 import com.kanade.ushio.adapter.UserCollectionAdapter
 import com.kanade.ushio.arch.AppDatabase
 import com.kanade.ushio.arch.Injection
-import com.kanade.ushio.arch.viewmodel.UserCollectionViewModel
+import com.kanade.ushio.arch.viewmodel.UserViewModel
 import com.kanade.ushio.ui.subject.SubjectActivity
 import com.kanade.ushio.ui.subject.SubjectDetailActivity
 import com.kanade.ushio.utils.IO2MainThread
@@ -28,7 +29,7 @@ import me.yokeyword.fragmentation.SupportFragment
 
 class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
     private lateinit var adapter: UserCollectionAdapter
-    private lateinit var viewModel: UserCollectionViewModel
+    private lateinit var viewModel: UserViewModel
     private val disposable = CompositeDisposable()
 
     companion object {
@@ -41,8 +42,8 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
         val subjectDao = AppDatabase.getInstance()
                 .subjectDao()
 
-        val factory = Injection.provideUserCollectionViewModelFactory()
-        viewModel = ViewModelProviders.of(this, factory).get(UserCollectionViewModel::class.java)
+        val factory = Injection.provideUserViewModelFactory()
+        viewModel = ViewModelProviders.of(this, factory).get(UserViewModel::class.java)
 
         adapter = UserCollectionAdapter(subjectDao, emptyList())
         val emptyView = inflater.inflate(R.layout.fragment_user_collection_empty, null, false)
@@ -60,18 +61,6 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
         toolbar.setOnMenuItemClickListener(this)
         adapter.bindToRecyclerView(rv)
 
-        refresh()
-    }
-
-    override fun onRefresh() {
-        refresh()
-    }
-
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        return true
-    }
-
-    private fun refresh() {
         disposable.add(
                 viewModel.queryCollection()
                         .IO2MainThread()
@@ -85,6 +74,21 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
                             it.printStackTrace()
                         })
         )
+    }
+
+    override fun onRefresh() {
+        disposable.add(
+                viewModel.queryCollectionFromServer()
+                        .IO2MainThread()
+                        .subscribe({}, {
+                            it.printStackTrace()
+                            ToastUtils.showLong(R.string.net_error)
+                        })
+        )
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return true
     }
 
     private val listener = object : OnItemClickListener() {

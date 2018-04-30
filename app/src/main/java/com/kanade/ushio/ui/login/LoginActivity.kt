@@ -1,6 +1,7 @@
 package com.kanade.ushio.ui.login
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.kanade.ushio.R
@@ -29,6 +30,13 @@ class LoginActivity : AppCompatActivity() {
                 .build()
     }
     private val disposable = CompositeDisposable()
+
+    companion object {
+        @JvmStatic
+        fun newIntent(context: Context?): Intent {
+            return Intent(context, LoginActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

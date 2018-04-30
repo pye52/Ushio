@@ -23,7 +23,7 @@ class UserCollectionAdapter(private var dao: SubjectDao, list: List<UserCollecti
 
                     val img = helper.getView<ImageView>(R.id.img)
                     GlideApp.with(mContext)
-                            .load(subject.images.large)
+                            .load(subject.images?.getImageL2S())
                             .placeholder(R.drawable.img_on_load)
                             .error(R.drawable.img_on_error)
                             .into(img)

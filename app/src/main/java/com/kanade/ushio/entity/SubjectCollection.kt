@@ -12,7 +12,17 @@ data class SubjectCollection(
         @SerializedName("ep_status")
         var epStatus: Int,
         var lasttouch: Long
-)
+) {
+        fun convert2UserCollection(subject: Subject): UserCollection {
+                return UserCollection(
+                        subject.id,
+                        subject.nameCn,
+                        epStatus,
+                        0,
+                        lasttouch
+                )
+        }
+}
 
 data class CollectionStatus(
         var id: Int,

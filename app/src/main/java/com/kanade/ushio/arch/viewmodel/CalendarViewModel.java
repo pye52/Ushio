@@ -3,35 +3,32 @@ package com.kanade.ushio.arch.viewmodel;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 
-import com.kanade.ushio.api.SubjectService;
-import com.kanade.ushio.api.UserCollectionService;
+import com.blankj.utilcode.util.LogUtils;
 import com.kanade.ushio.arch.repository.CalendarRepository;
-import com.kanade.ushio.arch.room.UserCollectionDao;
+import com.kanade.ushio.arch.repository.SubjectRepository;
+import com.kanade.ushio.arch.repository.UserRepository;
 import com.kanade.ushio.entity.Calendar;
-import com.kanade.ushio.entity.CalendarSubject;
+import com.kanade.ushio.entity.Subject;
 import com.kanade.ushio.entity.SubjectCollection;
 import com.kanade.ushio.entity.UserCollection;
 import com.kanade.ushio.utils.SharedPreferencesUtilsKt;
 
-import org.reactivestreams.Publisher;
 
 import java.util.HashSet;
 import java.util.List;
 
 import io.reactivex.Flowable;
-import io.reactivex.functions.Function;
 
 public class CalendarViewModel extends ViewModel {
-    private SubjectService subjectService;
-    private UserCollectionDao userCollectionDao;
-    private UserCollectionService userCollectionService;
+    private SubjectRepository subjectRepository;
+    private UserRepository userRepository;
     private CalendarRepository calendarRepository;
 
-    public CalendarViewModel(SubjectService subjectService, UserCollectionDao userCollectionDao,
-                             UserCollectionService userCollectionService, CalendarRepository calendarRepository) {
-        this.subjectService = subjectService;
-        this.userCollectionDao = userCollectionDao;
-        this.userCollectionService = userCollectionService;
+    public CalendarViewModel(SubjectRepository subjectRepository,
+                             UserRepository userRepository,
+                             CalendarRepository calendarRepository) {
+        this.subjectRepository = subjectRepository;
+        this.userRepository = userRepository;
         this.calendarRepository = calendarRepository;
     }
 
@@ -39,50 +36,27 @@ public class CalendarViewModel extends ViewModel {
     public Flowable<List<Calendar>> queryCalendar() {
         long userId = SharedPreferencesUtilsKt.getUserId();
         return Flowable.combineLatest(
-                calendarRepository.queryCalendar()
-                        .flatMap((Function<List<Calendar>, Publisher<List<Calendar>>>) list -> {
-                            if (list.isEmpty()) {
-                                return subjectService.queryCalendar()
-                                        .doOnSubscribe(subscription -> calendarRepository.deleteAll())
-                                        .doOnNext(calendars -> calendarRepository.insertCalendar(calendars));
-                            } else {
-                                return Flowable.just(list);
-                            }
-                        }),
-                userCollectionDao.queryUserCollection()
-                        .flatMap((Function<List<UserCollection>, Publisher<List<UserCollection>>>) list -> {
-                            if (list.isEmpty()) {
-                                return userCollectionService.getUserCollection(String.valueOf(userId), "watching", "small");
-                            } else {
-                                return Flowable.just(list);
-                            }
-                        }),
+                calendarRepository.queryCalendar(),
+                userRepository.queryCollection(String.valueOf(userId)),
                 this::subjectStatusSetting);
     }
 
-    public Flowable<List<Calendar>> queryCalendarFromServer() {
-        long userId = SharedPreferencesUtilsKt.getUserId();
-        return Flowable.combineLatest(
-                subjectService.queryCalendar(),
-                userCollectionService.getUserCollection(String.valueOf(userId), "watching", "small"),
-                this::subjectStatusSetting)
-                // 每次获取新信息，都得先清理数据库
-                .doOnSubscribe(subscription -> calendarRepository.deleteAll())
-                .doOnNext(calendars -> calendarRepository.insertCalendar(calendars));
-    }
-
-    public Flowable<SubjectCollection> updateSubjectAction(final CalendarSubject subject) {
+    public Flowable<SubjectCollection> updateSubjectAction(final Subject subject) {
         if (subject.onHold()) {
-            return subjectService.updateSubject(subject.getId(), "do", "", "", 0, 0)
+            return subjectRepository.updateSubject(subject.getId(), "", "", "", 0, 0)
                     .doOnNext(subjectCollection -> {
+                        LogUtils.e("执行了drop");
                         subject.dropSubject();
-                        calendarRepository.updateCalendarSubject(subject);
+                        userRepository.deleteCollectionById(subject.getId());
+                        subjectRepository.insertSubject(subject);
                     });
         } else {
-            return subjectService.updateSubject(subject.getId(), "", "", "", 0, 0)
+            return subjectRepository.updateSubject(subject.getId(), "do", "", "", 0, 0)
                     .doOnNext(subjectCollection -> {
+                        LogUtils.e("执行了hold");
                         subject.holdSubject();
-                        calendarRepository.updateCalendarSubject(subject);
+
+                        subjectRepository.insertSubject(subject);
                     });
         }
     }
@@ -99,7 +73,7 @@ public class CalendarViewModel extends ViewModel {
             if (calendar.getSubjects() == null) {
                 continue;
             }
-            for (CalendarSubject subject : calendar.getSubjects()) {
+            for (Subject subject : calendar.getSubjects()) {
                 if (set.contains(subject.getId())) {
                     subject.holdSubject();
                 } else {

@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 
 class SubjectDetailViewModel(private var repository: SubjectRepository) : ViewModel() {
     fun querySubject(id: Long): Flowable<LargeSubject> {
-        return repository.querySubject(id)
+        return repository.querySubjectFromServer(id)
     }
 
     fun querySubjectCollection(subjectId: Long): Flowable<SubjectCollection> {

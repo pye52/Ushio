@@ -14,6 +14,9 @@ interface UserCollectionDao {
     @Query("select * from UserCollection where id = :id")
     fun queryUserCollection(id: Int): Maybe<UserCollection>
 
+    @Query("delete from UserCollection where id = :id")
+    fun deleteUserCollectionById(id: Long): Int
+
     @Delete
     fun deleteUserCollection(collection: UserCollection): Int
 

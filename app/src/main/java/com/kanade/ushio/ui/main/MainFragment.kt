@@ -57,7 +57,8 @@ class MainFragment : SupportFragment(){
     override fun onEnterAnimationEnd(savedInstanceState: Bundle?) {
         val fragmentList = listOf<SupportFragment>(
                 UserCollectionFragment.newIntent(),
-                CalendarFragment.newIntent()
+                CalendarFragment.newIntent(),
+                AboutFragment.newIntent()
         )
         bottomNv.setOnNavigationItemSelectedListener(listener)
         vp.adapter = MainVpAdapter(fragmentList, childFragmentManager)

@@ -1,5 +1,12 @@
 package com.kanade.ushio.api
 
+import com.google.gson.GsonBuilder
+import com.kanade.ushio.entity.Alias
+import com.kanade.ushio.entity.Info
+import com.kanade.ushio.entity.WatchStatusResult
+import com.kanade.ushio.entity.typeadapter.AliasTypeAdapter
+import com.kanade.ushio.entity.typeadapter.InfoTypeAdapter
+import com.kanade.ushio.entity.typeadapter.WatchStatusResultTypeAdapter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,9 +26,15 @@ object ApiManager {
                 .addInterceptor(AuthInterceptor())
                 .build()
 
+        val gson = GsonBuilder()
+                .registerTypeAdapter(WatchStatusResult::class.java, WatchStatusResultTypeAdapter())
+                .registerTypeAdapter(Info::class.java, InfoTypeAdapter())
+                .registerTypeAdapter(Alias::class.java, AliasTypeAdapter())
+                .create()
+
         Retrofit.Builder()
                 .baseUrl(API_HOST)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build()
