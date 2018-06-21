@@ -11,7 +11,7 @@ data class Ep(
         var id: Long = 0,
         var url: String? = null,
         var type: Int = 0,
-        var sort: Int = 0,
+        var sort: Float = 0f,
         var name: String? = null,
         @SerializedName("name_cn")
         var nameCn: String? = null,

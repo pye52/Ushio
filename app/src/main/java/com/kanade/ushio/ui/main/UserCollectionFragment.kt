@@ -23,14 +23,17 @@ import com.kanade.ushio.ui.subject.SubjectDetailActivity
 import com.kanade.ushio.utils.IO2MainThread
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_user_collection.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.yokeyword.fragmentation.SupportFragment
+import java.util.*
 
 class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
     private lateinit var adapter: UserCollectionAdapter
     private lateinit var viewModel: UserViewModel
-    private val disposable = CompositeDisposable()
+    private var loadDisposable: Disposable? = null
+    private var refreshDisposable: Disposable? = null
 
     companion object {
         @JvmStatic
@@ -61,8 +64,7 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
         toolbar.setOnMenuItemClickListener(this)
         adapter.bindToRecyclerView(rv)
 
-        disposable.add(
-                viewModel.queryCollection()
+        loadDisposable = viewModel.queryCollection()
                         .IO2MainThread()
                         .doOnSubscribe { srl.isRefreshing = true }
                         .subscribeOn(AndroidSchedulers.mainThread())
@@ -73,18 +75,17 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
                             srl.isRefreshing = false
                             it.printStackTrace()
                         })
-        )
     }
 
     override fun onRefresh() {
-        disposable.add(
-                viewModel.queryCollectionFromServer()
-                        .IO2MainThread()
-                        .subscribe({}, {
-                            it.printStackTrace()
-                            ToastUtils.showLong(R.string.net_error)
-                        })
-        )
+        refreshDisposable?.dispose()
+        refreshDisposable = viewModel.queryCollectionFromServer()
+                .IO2MainThread()
+                .subscribe({}, {
+                    it.printStackTrace()
+                    ToastUtils.showLong(R.string.net_error)
+                    adapter.setNewData(Collections.emptyList())
+                })
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
@@ -107,6 +108,7 @@ class UserCollectionFragment : SupportFragment(), SwipeRefreshLayout.OnRefreshLi
 
     override fun onDestroyView() {
         super.onDestroyView()
-        disposable.dispose()
+        loadDisposable?.dispose()
+        refreshDisposable?.dispose()
     }
 }
